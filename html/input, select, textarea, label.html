@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>input, select, textarea, label 태그</title>
+</head>
+<body>
+<div>
+  <span>button</span>
+  <input type="button" value="버튼">
+</div>
+<div>
+  <span>checkbox</span>
+  <input type="checkbox">
+  <span>약관을 읽어보았고 이해하였으며 동의합니다.</span>
+</div>
+<div>
+  <span>date</span>
+  <input type="date">
+  <span>생년월일을 선택해 주세요.</span>
+</div>
+<div>
+    <span>email</span>
+    <input type="email">
+    <span>이메일을 입력해 주세요.</span>
+</div>
+<div>
+    <span>file</span>
+    <input multiple type="file">
+    <span>프로필 이미지를 선택해 주세요</span>
+</div>
+<div>
+    <span>number</span>
+    <input type="number">
+    <span>나이를 입력해 주세요</span>
+</div>
+<div>
+    <span>password</span>
+    <input type="password">
+    <span>비밀번호를 입력해 주세요</span>
+</div>
+<div>
+    <span>radio</span>
+    <input name="tc" type="radio">
+    <span>KT</span>
+    <input name="tc" type="radio">
+    <span>SKT</span>
+    <input name="tc" type="radio">
+    <span>LGU+</span>
+</div>
+<div>
+    <span>reset</span>
+    <input type="reset" value="다시 입력">
+</div>
+<div>
+    <span>submit</span>
+    <input type="submit" value="로그인">
+</div>
+<div>
+    <span>tel</span>
+    <input type="tel">
+    <span>연락처를 입력하세요</span>
+</div>
+<form>
+    <div>
+        <span>거주지(구)를 선택하세요.</span>
+        <select name="city">
+            <optgroup label="대구광역시">
+                <option value="0531">동구</option>
+                <option value="0532">중구</option>
+                <option value="0533">수성구</option>
+            </optgroup>
+            <optgroup label="인천광역시">
+                <option value="0321">동구</option>
+                <option value="0322">연수구</option>
+                <option value="0323">미추홀구</option>
+            </optgroup>
+        </select>
+    </div>
+    <input id="rememberCheck" name="remember" type="checkbox">
+    <label for="rememberCheck">자동 로그인</label>
+    <br><br>
+    <input name="remember" type="checkbox">
+    <span>자동 로그인</span>
+    <br>
+    <input type="submit" value="제출">
+</form>
+
+
+</body>
+</html>
