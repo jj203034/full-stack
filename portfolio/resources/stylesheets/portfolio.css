@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+h1, h2, h3, h4, h5, h6 {
+    font: inherit;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+p {
+    margin-block: unset;
+    margin-inline: unset;
+}
+
+html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+    color: #10151a;
+    font-size: 1rem;
+    margin: unset;
+}
+
+#header {
+    width: 15rem;
+    height: 100%;
+    align-items: center;
+    background-color: #ffe5cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+#header > #mainMenu {
+}
+
+#header > #mainMenu > .menu-container > .menu{
+    font-size: 1.35rem;
+    color: #454545;
+    list-style-type: none;
+    margin-bottom: 1.35rem;
+}
+body > .section.intro {
+    color: #20252a;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+body > .section.intro > .title {
+
+}
