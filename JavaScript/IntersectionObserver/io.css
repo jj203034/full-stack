@@ -1,0 +1,138 @@
+@charset "UTF-8";
+
+h1, h2, h3, h4, h5, h6 {
+    font: inherit;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+p {
+    margin-block: unset;
+    margin-inline: unset;
+}
+
+html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+    color: #10151a;
+    font-size: 1rem;
+    margin: unset;
+    overflow: hidden auto;
+}
+
+body > .section {
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 5rem;
+}
+
+body > .section:nth-child(1) {
+    background-color: #f1948a;
+}
+
+body > .section:nth-child(2) {
+    background-color: #eafaf1;
+}
+
+body > .section:nth-child(3) {
+    background-color: #fef9e7;
+}
+
+body > .section.intro {
+    align-items: flex-start;
+    color: #f0f5fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body > .section.intro > * {
+    left: -2rem;
+    opacity: 0;
+    position: relative;
+    transition-duration: 750ms;
+    transition-property: left, opacity;
+    transition-timing-function: ease;
+}
+
+body > .section.intro.visible > * {
+    left: 0;
+    opacity: 1;
+}
+
+body > .section.intro > .title {
+    font-size: 5rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
+}
+
+body > .section.intro > .message {
+    font-size: 1.25rem;
+    letter-spacing: 0.0625rem;
+    line-height: 150%;
+    margin-bottom: 3.75rem;
+}
+
+body > .section.intro > .continue {
+    background-color: #EC7063;
+    border-radius: 0.5rem;
+    color: inherit;
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    text-decoration: unset;
+}
+
+body > .section.skills {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body > .section.skills > .title {
+    font-size: 3.75rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
+}
+
+body > .section.skills > .skill-container {
+    align-self: stretch;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+}
+
+body > .section.skills > .skill-container > .skill {
+    left: -1rem;
+    align-items: flex-start;
+    background-color: #808B96;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 0;
+    padding: 1.5rem;
+    position: relative;
+    transition-duration: 1000ms;
+    transition-property: left, opacity;
+    transition-timing-function: ease;
+}
+
+body > .section.skills.visible > .skill-container > .skill {
+    left: 0;
+    opacity: 1;
+}
+
+body > .section.skills > .skill-container > .skill > .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
