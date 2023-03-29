@@ -1,0 +1,596 @@
+@charset "UTF-8";
+
+:root {
+    --concept-color-light: #f6f1eb;
+}
+
+html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+body {
+    background-color: var(--concept-color-light);
+    color: #454545;
+    margin: 0;
+}
+
+a:link {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+._container {
+    padding: 0 3rem;
+    position: relative;
+}
+
+._container > ._content {
+    left: 50%;
+    width: 100%;
+    max-width: 77.5rem;
+    position: relative;
+    transform: translateX(-50%);
+}
+
+._container > ._content._small {
+    max-width: 67.5rem;
+}
+
+._toggle {
+    display: none;
+}
+
+#cover {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #10151aa0;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition-duration: 250ms;
+    transition-timing-function: ease;
+    transition-property: opacity;
+    z-index: 8;
+}
+
+#mainMenuToggle:checked ~ #cover {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#mainMenu {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100vh;
+    background-color: #ffffff;
+    overflow: hidden auto;
+    position: fixed;
+    transition-duration: 250ms;
+    transition-property: width;
+    transition-timing-function: ease;
+    z-index: 9;
+}
+
+#mainMenuToggle:checked ~ #mainMenu {
+    width: 30rem;
+}
+
+#mainMenu > .menu {
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+#mainMenu > .menu.main {
+    padding: 4rem 5rem;
+}
+
+#mainMenu > .menu.main > .head {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-bottom: 1.5rem;
+}
+
+#mainMenu > .menu.main > .head > .close-wrapper {
+    margin-right: 1rem;
+}
+
+#mainMenu > .menu.main > .head > .title {
+    font-size: 2.125rem;
+    font-weight: 400;
+    margin-block: unset;
+    margin-inline: unset;
+}
+
+#mainMenu > .menu.main > .item {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
+    justify-content: flex-start;
+    padding-bottom: 0.5rem;
+}
+
+#mainMenu > .menu.main > .item > .toggle {
+    display: none;
+}
+
+#mainMenu > .menu.main > .item > .label {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#mainMenu > .menu.main > .item > .label > .text {
+    flex: 1;
+}
+
+#mainMenu > .menu.main > .item > .label > .icon {
+    display: none;
+}
+
+#mainMenu > .menu.main > .item > .toggle:checked + .label > .icon.collapse {
+    display: block;
+}
+
+#mainMenu > .menu.main > .item > .toggle:not(:checked) + .label > .icon.expand {
+    display: block;
+}
+
+#mainMenu > .menu.main > .item > .submenu {
+    max-height: 0;
+    font-size: 0.9rem;
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    overflow: hidden;
+    padding-inline: unset;
+    padding: 0.5rem 0;
+    transition-duration: 375ms;
+    transition-property: max-height;
+    transition-timing-function: ease;
+}
+
+#mainMenu > .menu.main > .item > .toggle:checked ~ .submenu {
+    max-height: 50rem;
+}
+
+#mainMenu > .menu.main > .item > .submenu > .item {
+    padding: 0.625rem 0 0.625rem 0.5rem;
+}
+
+#mainMenu > .menu.main > .item > .submenu > .insp {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#mainMenu > .menu.main > .item > .submenu > .insp > .text {
+    font-size: 1.25rem;
+    padding: 0.625rem 0;
+}
+
+#topMenuContainer > .top-menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-size: 0.8rem;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+    padding: 1rem 0 0 0;
+}
+
+#topMenuContainer > .top-menu > .item + .item {
+    margin-left: 1.75rem;
+}
+
+#headerContainer {
+    top: 0;
+    background-color: var(--concept-color-light);
+    padding: 1rem 3rem;
+    position: sticky;
+    z-index: 1;
+}
+
+#headerContainer > .header {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#headerContainer > .header > .menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+#headerContainer > .header > .menu > .item + .item {
+    margin-left: 0.75rem;
+}
+
+#headerContainer > .header > .menu > .item > .icon-text-button {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#headerContainer > .header > .menu > .item > .icon-text-button > .icon {
+    margin-right: 0.5rem;
+}
+
+#headerContainer > .header > .search-form {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: flex-start;
+    margin: 0 3rem;
+}
+
+#headerContainer > .header > .search-form > .keyword-wrapper {
+    width: 100%;
+    position: relative;
+}
+
+#headerContainer > .header > .search-form > .keyword-wrapper > .icon {
+    top: 50%;
+    left: 0.625rem;
+    pointer-events: none;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+#headerContainer > .header > .search-form > .keyword-wrapper > .keyword-input {
+    width: 7.5rem;
+    border: 0.0625rem solid #959595;
+    box-sizing: border-box;
+    font: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    padding: 0.625rem 0.625rem 0.625rem 2.125rem;
+    transition-duration: 250ms;
+    transition-property: width;
+    transition-timing-function: ease;
+}
+
+#headerContainer > .header > .search-form > .keyword-wrapper > .keyword-input:focus {
+    width: 100%;
+}
+
+#headerContainer > .header > .search-form > .logo-wrapper {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#headerContainer > .header > .search-form > .keyword-wrapper:focus-within + .logo-wrapper {
+    display: none;
+}
+
+#newsContainer {
+    margin-bottom: 4rem;
+}
+
+#newsContainer > .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem 0;
+}
+
+#newsContainer > .content > .title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-block: unset;
+    margin-inline: unset;
+    margin-bottom: 1.25rem;
+}
+
+#newsContainer > .content > .text {
+    font-family: serif;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0.05rem;
+    line-height: 150%;
+    margin-bottom: 1.25rem;
+}
+
+#newsContainer > .content > .link {
+    border-bottom: 0.0625rem solid #000000;
+    font-family: serif;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    margin-bottom: 3.25rem;
+    padding-bottom: 0.2rem;
+}
+
+#newsContainer > .content > .link:hover {
+    border-bottom: none;
+}
+
+#newsContainer > .content > .video {
+    align-self: stretch;
+}
+
+#collectionContainer {
+    margin-bottom: 4rem;
+}
+
+#collectionContainer > .collection {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#collectionContainer > .collection > .title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-block: unset;
+    margin-inline: unset;
+    margin-bottom: 1.5rem;
+}
+
+#collectionContainer > .collection > .grid {
+    align-self: stretch;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+#collectionContainer > .collection > .grid > .item > .link > .image {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+#collectionContainer > .collection > .grid > .item > .link > .text {
+    font-size: 1.125rem;
+}
+
+#lookContainer > .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem 0;
+}
+
+#lookContainer > .content > .title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-block: unset;
+    margin-inline: unset;
+    margin-bottom: 1.25rem;
+}
+
+#lookContainer > .content > .text {
+    font-family: serif;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 0.05rem;
+    line-height: 150%;
+    margin-bottom: 1.25rem;
+}
+
+#lookContainer > .content > .link {
+    border-bottom: 0.0625rem solid #000000;
+    font-family: serif;
+    font-size: 1.0625rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    margin-bottom: 3.25rem;
+    padding-bottom: 0.2rem;
+}
+
+#lookContainer > .content > .link:hover {
+    border-bottom: none;
+}
+
+#lookContainer > .content > .items {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: repeat(4, 1fr);
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+#lookContainer > .content > .items > .item {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#lookContainer > .content > .items > .item.big {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+#lookContainer > .content > .items > .item > .image {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+#lookContainer > .content > .items > .item > .name {
+    font-size: 1.0625rem;
+    letter-spacing: 0.05rem;
+    margin-bottom: 0.375rem;
+}
+
+#lookContainer > .content > .items > .item > .price {
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+#footerContainer {
+    background-color: #ffffff;
+}
+
+#footerContainer > .store {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#footerContainer > .store > .box {
+    align-items: center;
+    border-bottom: 0.0625rem solid #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+    letter-spacing: 0.0375rem;
+    line-height: 125%;
+    padding: 3.5rem 0;
+    text-align: center;
+}
+
+#footerContainer > .store > .box .link {
+    text-decoration: underline;
+}
+
+#footerContainer > .store > .box .link:hover {
+    text-decoration: none;
+}
+
+#footerContainer > .store > .box > .title {
+    font-size: 1.375rem;
+    font-weight: 400;
+    margin-block: unset;
+    margin-inline: unset;
+}
+
+#footerContainer > .store > .box > * + * {
+    margin-top: 1rem;
+}
+
+#footerContainer > .news {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+    padding: 3.5rem 0;
+}
+
+#footerContainer > .news > * + * {
+    margin-top: 0.625rem;
+}
+
+#footerContainer > .news > .title {
+    font-size: 1.375rem;
+    font-weight: 400;
+    margin-block: unset;
+    margin-inline: unset;
+}
+
+#footerContainer > .news > .button {
+    background-color: #454545;
+    border-radius: 0.25rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    padding: 0.875rem 3rem;
+}
+
+#footerContainer > .site-map {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#footerContainer > .site-map > .menu {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+    padding-bottom: 3.5rem;
+}
+
+#footerContainer > .site-map > .menu > .item + .item {
+    margin-top: 0.75rem;
+}
+
+#footerContainer > .site-map > .menu > .item.title {
+    font-size: 1.2rem;
+}
+
+/* @media 쿼리는 화면의 크기(등)에 따라 별도로 지정할 선택자를 담는다. */
+/* 가령, 아래와 같이 max-width: 50rem 으로 설정되게 되면, 화면의 가로 크기가 50rem 이하일 때의 선택자를 별도로 담는다. */
+/* 미디어 쿼리는 주어진 조건이 부합할 때에만 포함하고 있는 선택자를 일괄 적용시킨다. 단, 해당 선택자들과 일반 선택자 간에도 우선순위가 동일하게 적용 됨으로 미디어 쿼리는 항시 CSS 가장 바닥에 작성한다. */
+@media screen and (max-width: 50rem) {
+    /* 즉, 아래 선택자 및 속성은 화면의 가로크기가 50rem 이하일 때, 검색 폼이 가지고 있는 모든 자식, 손자를 숨기겠다는 의미이다. */
+    #headerContainer > .header > .search-form * {
+        display: none;
+    }
+
+    /* 마찬가지로, 화면이 50rem 보다 작을 때 컬렉션 그리드의 열 개수를 두 개로 줄이는 선택자이다. */
+    #collectionContainer > .collection > .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 화면이 50rem 보다 작을 때 '전속력으로!' 부분의 그리드 열 개수를 두 개로 줄이는 선택자이다. */
+    #lookContainer > .content > .items {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 화면이 50rem 보다 작을 때 '고객의 쇼핑을 지원합니다.'와 '매장 찾기'를 두 개의 열에서 한 개의 열로 줄이는 선택자이다. */
+    #footerContainer > .store {
+        grid-template-columns: 1fr;
+    }
+
+    /* 화면이 50rem 보다 작을 때 사이트 맵을 네 개 열에서 두 개열로 줄이는 선택자이다. */
+    #footerContainer > .site-map {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+

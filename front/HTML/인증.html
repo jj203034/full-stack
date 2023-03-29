@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>인증</title>
+</head>
+<body>
+<form>
+  <div>
+  <span>이름 : </span>
+  <input required type="text">
+  </div>
+  <div>
+    <span>휴대폰번호 : </span>
+    <input required type="tel">
+  </div>
+  <div>
+    <span>통신사 선택</span>
+    <input name="tc" type="radio">
+    <span>SKT</span>
+    <input name="tc" type="radio">
+    <span>KT</span>
+    <input name="tc" type="radio">
+    <span>LG U+</span>
+  </div>
+  <div>
+    <input type="submit" value="인증번호 전송">
+  </div>
+</form>
+<div>
+  <span>인증번호 입력 : </span>
+  <input required maxlength="6" type="number">
+</div>
+</body>
+</html>

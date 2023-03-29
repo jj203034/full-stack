@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript</title>
+    <script>
+        // 변수와 상수 선언
+        // let a = 7; // 변수 a는 7이라는 값으로 초기화되어 선언.
+        // let b; // 변수 b는 (초기화 없이) 선언.
+        // console.log(a);
+        // console.log(b);
+        //
+        // const pi = 3.141592;
+        // console.log(pi);
+
+        //NaN 설명
+        // console.log(0/0); // NaN
+        // console.log(typeof NaN); //Number
+        //무한수 설명
+        // console.log(1/0); //Infinity
+        // console.log(typeof Infinity); //Number
+        //템플릿 문자열 연결
+        // let name = '김갑수';
+        // let age = 17;
+        // console.log('안녕하세요? ' + name + '입니다. ' + age + '살이에요.')
+        // console.log(`안녕하세요? ${name}입니다. ${age}살이에요.`);
+
+        // 비교 연산자
+        // let a = 5;
+        // let b = '5';
+        // console.log( a === b );
+
+        // 산술 연산자
+        // console.log( 5 + 5 );
+        // console.log( '5' + 5 );
+        // let num = 5;
+        // console.log(num++); //5
+        // console.log(num); //6
+
+        // Nullish
+        // let name = null;
+        // name ??= '이름 없음';
+        // console.log(name);
+
+        // Optional Chaining 사용
+        // let name = 'Homer Simpson';
+        // let name = null; // undefined
+        // console.log(name?.length ?? -1);
+        // <Nullish>.length
+
+        // For문 사용
+        // for (let i = 1; i <= 5; i++) {
+        //     console.log(i);
+        // }
+        // for (let i = 5; i >= 0; i--) {
+        //     console.log(i * 2);
+        // }
+
+        // While문 사용
+        // let num = 45561323789;
+        // let cycleCount = 0;
+        // while (num > 100) {
+        //     num /= 10;
+        //     cycleCount++;
+        // }
+        // console.log(num);
+        // console.log(`${cycleCount}바퀴 돌았음`)
+
+        // do-while문 사용
+        // let num = 45;
+        // let cycleCount = 0;
+        // do {
+        //     num /= 10;
+        //     cycleCount++;
+        // } while (num > 100);
+        // console.log(num);
+        // console.log(`${cycleCount}바퀴 돌았음`)
+
+        // if문 사용
+        // if (8 > 2) {
+        //     console.log('참')
+        // }
+
+        // if-else문 사용
+        // if (8 > 32) {
+        //     console.log('참');
+        // } else {
+        //     console.log('거짓');
+        // }
+
+        // if-else if문 사용
+        // let num = 3;
+        // if (num === 1) {
+        //     console.log('일');
+        // } else if (num === 2) {
+        //     console.log('이');
+        // } else if (num === 3) {
+        //     console.log('삼');
+        // } else if (num === 4) {
+        //     console.log('사');
+        // }
+
+        // switch문 사용
+        // let num = 7;
+        // switch (num) {
+        //     case 1:
+        //         console.log('일')
+        //         break;
+        //     case 2:
+        //         console.log('이')
+        //         break;
+        //     case 3:
+        //         console.log('삼')
+        //         break;
+        //     default:
+        //         console.log('몰?루')
+        // }
+
+        // 목적지가 '대구은행'역 이라는 상황에서
+        // 출발역에 따른 거쳐야 하는 역(들) 출력
+        // 출발역이 '내당'역 이라는 가정하에
+        // let dep = '내당';
+        // console.log('== 출발 ==');
+        // switch (dep) {
+        //     case '두류':
+        //         console.log('두류역');
+        //     case '내당':
+        //         console.log('내당역');
+        //     case '반고개':
+        //         console.log('반고개역');
+        //     case '청라언덕':
+        //         console.log('청라언덕역');
+        //     case '반월당':
+        //         console.log('반월당역');
+        //     case '경대병원':
+        //         console.log('경대병원역');
+        //     case '대구은행':
+        //         console.log('대구은행역');
+        //         console.log('== 도착 ==');
+        //         break;
+        //     default:
+        //         console.log('잘못 탔음.');
+        // }
+
+        // 일반 함수 sum
+        // function sum(a,b) {
+        //     return a + b;
+        // }
+        // console.log(sum(3, 7));
+
+        // 매개변수 a,b를 가지는 함수 sum을 만드세요
+        // 함수 sum은 a와 b의 합을 반환해야함
+        // a나 b중 하나라도 타입이 숫자가 아닐 경우 -1을 출력
+        // function sum(a,b) {
+        //     if (typeof a != 'number' || typeof b != 'number') {
+        //         return -1;
+        //     }
+        //     return a+b;
+        // }
+        //
+        // // OR
+        // function sum(a,b) {
+        //     return (typeof a !== 'number' || typeof b !== 'number') ? -1 : a + b;
+        // }
+
+        // 화살표 함수
+        // let sum = (a,b) => a + b;
+
+        // 배열 속성 length
+        // let fruits = ['Apple', 'Banana','Orange'];
+        // for (let i = 0; i < fruits.length; i++) {
+        //     console.log(fruits[i])
+        // }
+
+        // 배열 메서드 at
+        // let fruits = ['Apple', 'Banana','Orange'];
+        // console.log(fruits.at(1))
+
+        // 배열 메서드 concat
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        // console.log(fruitsAll)
+
+        // 배열 메서드 fill
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // fruitsAll.fill('house');
+        // console.log(fruitsAll)
+
+        // 배열 메서드 includes / indexOf
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // console.log(fruitsAll.includes('Melon'))
+        // console.log(fruitsAll.indexOf('Grape'))
+
+        // 배열 메서드 join
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // console.log(fruitsAll.join());
+
+        // 배열 메서드 push
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // console.log(fruitsAll.push('Watermelon'));
+        // console.log(fruitsAll)
+
+        // 배열 메서드 slice
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // console.log(fruitsAll);
+        //
+        // let slicedFruits = fruitsAll.slice(1, 5);
+        // console.log(slicedFruits);
+
+        //배열 메서드 sort
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // fruitsAll.sort();
+        // console.log(fruitsAll);
+
+        // 배열 메서드 splice(i, d)
+        // let fruits1 = ['Apple', 'Banana','Orange'];
+        // let fruits2 = ['Grape', 'Melon', 'Lemon'];
+        // let fruitsAll = fruits1.concat(fruits2);
+        //
+        // console.log(fruitsAll);
+        // fruitsAll.splice(1, 3);
+        // console.log(fruitsAll);
+
+        // 배열 메서드 splice(i,d,[v...])
+        // let days = ['일','월','천','해','목','금','토']
+        //
+        // console.log(days);
+        // days.splice(2, 2, '화','수');
+        // console.log(days);
+
+        // 람다형 함수 forEach
+        // let days = ['일','월','화','수','목','금','토']
+        // days.forEach((x , i) => {
+        //     console.log(`${i}번째 :${x}`)
+        // })
+
+        // 람다형 함수 every / some
+        // let days = ['일','월','화','수','목','금','토']
+        // let r = days.every((x) => x.length === 1);
+        // console.log(r);
+        // let r = days.some((x) => x.length === 1);
+        // console.log(r);
+
+        // nums 배열이 가진 인자를 ascii 코드의 순서에 맞게 오름차순 정렬 하고
+        // nums 배열이 가진 인자중 짝수인 인자만을 가지는 배열 evens를 만드세요.
+        // let nums = [17, 3, 5, 23, 9, 107, 56, 1, 118, 94, 37]
+        // nums.sort()
+        // console.log(nums)
+        // let evens = nums.filter((x) => x%2==0);
+        // console.log(evens)
+        // 또는
+        // let evens = nums.filter(x => x%2 === 0).sort();
+        // 또는 (for문 사용)
+        // let nums = [17, 3, 5, 23, 9, 107, 56, 1, 118, 94, 37]
+        // let evens = [];
+        // for (let i = 0; i < nums.length; i++) {
+        //     let num = nums[i];
+        //     if (num % 2 === 0) {
+        //         evens.push(num);
+        //     }
+        // }
+        // console.log(evens);
+
+        // 가변인자
+        // let sum = (...a) => {
+        //     let sum = 0;
+        //     for (let i = 0; i < a.length; i++) {
+        //         sum += a[i];
+        //     }
+        //     return sum;
+        // };
+        // console.log(sum(1,2,3,4,5,6,7,8,9));
+
+        // for...in , for...of
+        // let days = ['일','월','화','수','목','금','토'];
+        // for (let i in days) {
+        //     console.log(i);
+        // }
+        //
+        // let days = ['일','월','화','수','목','금','토'];
+        // for (let i of days) {
+        //     console.log(i);
+        // }
+
+        // Object
+        // let countryNames = {
+        //     KR: '대한민국',
+        //     US: '미국',
+        //     JP: '일본',
+        //     FR: '프랑스',
+        //     DE: '독일',
+        //  };
+        // console.log(countryNames['US']);
+        // delete countryNames['US']
+        //  console.log(countryNames.US);
+
+        // Object 정적 메서드
+        // let countryNames = {
+        //     KR: '대한민국',
+        //     US: '미국',
+        //     JP: '일본',
+        //     FR: '프랑스',
+        //     DE: '독일',
+        // };
+        // let countryCodes = Object.keys(countryNames);
+        //
+        //
+        // for (let countryCode of countryCodes) {
+        //     console.log(`${countryCode} : ${countryNames[countryCode]}`);
+        // }
+
+    </script>
+</head>
+<body>
+<input type="number" id="numA">
+<select id="operation">
+    <option value="plus">+</option>
+    <option value="minus">-</option>
+    <option value="multiply">*</option>
+    <option value="divide">/</option>
+    <option value="percent">%</option>
+</select>
+<input type="number" id="numB">
+<button id="calc">계산하기</button>
+<span id="result">[계산하기] 버튼을 눌러주세요.</span>
+<ol id="history">
+
+</ol>
+<script>
+    // querySelector
+    // let abc = document.getElementById('abc');
+    // abc.innerHTML = '<input>';
+
+    // let s = document.querySelector('span');
+
+    // querySelectorAll
+    // let spanArray = Array.from(document.querySelectorAll('span'));
+    // for (let span in spanArray) {
+    //     spanArray[span].innerText = span;
+    // }
+
+    // event click
+    // const nameInput = document.getElementById('name')
+    // const clickMeButton = document.getElementById('clickMe')
+    // clickMeButton.addEventListener('click', () => {
+    //     alert(`안녕하세요? ${nameInput.value}님.`)
+    // });
+
+    // 두 수를 입력받아 계산하여 결과출력
+    const numAInput = document.getElementById('numA')
+    const operationSelect = document.getElementById('operation')
+    const numBInput = document.getElementById('numB')
+    const calcButton = document.getElementById('calc')
+    const resultSpan = document.getElementById('result')
+    const historyOl = document.getElementById('history')
+    calcButton.addEventListener('click', () => {
+        const numA = parseInt(numAInput.value);
+        const numB = parseInt(numBInput.value);
+        const operation = operationSelect.value;
+        let result;
+        if (operation === 'plus') {
+            result = numA + numB;
+        } else if (operation === 'minus') {
+            result = numA - numB;
+        } else if (operation === 'multiply') {
+            result = numA * numB;
+        } else if (operation === 'divide') {
+            result = numA / numB;
+        } else if (operation === 'percent') {
+            result = numA % numB;
+        }
+        resultSpan.innerText = result;
+        historyOl.innerHTML += `<li>${numA} ${operation} ${numB} = ${result}</li>`;
+    });
+
+</script>
+</body>
+</html>

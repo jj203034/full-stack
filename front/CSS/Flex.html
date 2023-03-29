@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Flex</title>
+    <style>
+        .container{
+            height: 15rem;
+            align-content: flex-start;
+            align-items: center;
+            background-color: #c0c5ca;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 1rem;
+        }
+        .container > .item{
+            border: 0.0625rem solid red;
+            white-space: nowrap;
+            /*background-color: #f0f5fa;*/
+            /*border: 0.0625rem solid #60656a;*/
+            /*padding: 1rem;*/
+        }
+        .container >.item.logo {
+            padding: 1rem;
+        }
+        .container >.item.spring {
+            flex: 1 1 auto;
+            /*flex-grow: 1;*/
+            /*flex-shrink: 1;*/
+            /*flex-basis: 0;*/
+        }
+        .container >.item.help {
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="item logo">로고로고로고</div>
+    <div class="item spring"></div>
+    <div class="item">로그인</div>
+    <div class="item">회원가입</div>
+    <div class="item">이메일찾기</div>
+    <div class="item">비밀번호찾기</div>
+    <div class="item help">고객센터<br>1888-1888</div>
+
+</div>
+</body>
+</html>
