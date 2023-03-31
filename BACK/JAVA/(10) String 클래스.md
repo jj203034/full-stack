@@ -1,0 +1,33 @@
+# String 클래스
+- `String`(`java.lang.String`)클래스는 문자열과 관련된 기능을 제공한다.
+## 객체 메서드
+- `charAt(int i)`: (`char`) 문자열이 가지고 있는 문자들 중, `i`번째 문자를 반환한다.
+- `concat(String s)`: (`String`) 호출 대상인 문자열의 내용 끝에 `s`를 이어붙인 새로운 문자열을 반환한다.
+- `contains(CharSequence s)`: (`boolean`) 호출 대상인 문자열의 내용이 `s`를 포함하고 있는가의 여부를 반환한다.
+- `endsWith(String s)`: (`boolean`) 호출 대상인 문자열의 내용이 `s`로 끝나는가의 여부를 반환한다.
+- `equals(Object o)`: (`boolean`) `o`가 `String`이 될 수 있다면 문자열의 내용을 비교하여 동일한가에 대한 여부를 반환한다.
+- `equalsIgnoreCase(String s)`: (`boolean`) `equals`와 동일하나 대소문자를 가리지 않는다.
+- `indexof(String s)`: (`int`) 호출 대상이 되는 문자열의 내용 중 `s`와 일치하는 첫 번째 순번을 반환한다. 일치하는 내용이 없다면 `-1`을 반환한다.
+- `lastIndexof(String s)`: (`int`) 호출 대상이 되는 문자열의 내용 중 `s`와 일치하는 마지막 순번을 반환한다. 일치하는 내용이 없다면 `-1`을 반환한다.
+- `length()`: (`int`) 문자열의 길이를 반환한다.
+- `matches(String r)`: (`boolean`) 호출 대상이 되는 문자열의 내용이 정규식 `r`에 부합하는가의 여부를 반환한다.
+- `repeat(int i)`: (`String`) 문자열의 내용을 `i`번 반복한 새로운 문자열을 반환한다.
+- `replace(CharSequence f, CharSequence t)`: (`String`) 문자열의 내용에서 `f`를 찾아 `t`로 치환한 문자열을 반환한다. 
+- `replaceAll(String r, String t)`: (`String`) 문자열의 내용에서 정규식 `r`을 만족하는 내용을 `t`로 치환한 문자열을 반환한다.
+- `split(String r)`: (`String[]`) 문자열에서 정규식 `r`을 만족하는 내용을 기준으로 문자열을 나누어 문자열 배열로 반환한다.
+- `startsWith(String s)`: (`boolean`) 호출 대상인 문자열의 내용이 `s`로 시작하는가의 여부를 반환한다.
+- `strip()`: (`String`) 문자열의 내용 상에서 선/후행하는 연속된 공백을 모두 제거하여 반환한다.
+- `stripLeading()`: (`String`) 문자열의 내용에서 선행하는 연속된 공백을 모두 제거하여 반환한다.
+- `stripTrailing()`: (`String`) 문자열의 내용에서 후행하는 연속된 공백을 모두 제거하여 반환한다.
+- `substring(int f, int t)`: (`String`) 문자열의 내용에서 `f`번째 부터 `t - 1`번째 까지의 문자를 반환한다.
+- `toCharArray()`: (`char[]`) 문자열의 내용을 문자 배열로 반환한다.
+- `toLowerCase()`: (`String`) 문자열이 포함하는 모든 알파벳을 소문자로 치환하여 반환한다.
+- `toUpperCase()`: (`String`) 문자열이 포함하는 모든 알파벳을 대문자로 치환하여 반환한다.
+## 정적 메서드
+- `copyValueOf(char[] cs)`: (`String`) 문자 배열을 문자열로 반환한다.
+- `format`
+- `join(CharSequence d, CharSequence... cs)`: (`String`) `cs`를 `d`로 이어붙인 문자열을 반환한다.
+- `valueOf(double d)`: (`String`) `d`를 문자열로 반환한다.
+- `valueOf(float f)`: (`String`) `f`를 문자열로 반환한다.
+- `valueOf(int i)`: (`String`) `i`를 문자열로 반환한다.
+- `valueOf(long l)`: (`String`) `l`를 문자열로 반환한다.
