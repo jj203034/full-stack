@@ -1,20 +1,17 @@
 package com.jjlee.world;
 
+import com.jjlee.world.animals.Eagle;
+import com.jjlee.world.animals.Flyable;
+
 public class Main {
     public static void main(String[] args) {
-        int a = 2;
-        int b = 16;
-        int c = 7;
-        double[] xs = calc(a, b, c);
-        if (xs.length == 0) {
-            System.out.println("허근");
-        } else if (xs.length == 1) {
-            System.out.println("중근 :"+xs[0]);
-        } else {
-            System.out.println("근1 :"+xs[0]);
-            System.out.println("근2 :"+xs[1]);
-        }
+        Country korea = new Country();
+        korea.name = "대한민국";
+        korea.continent = Continent.ASIA;
+        korea.population = 51_414_281L;
+        korea.area = 100_210D;
 
+        System.out.println(korea.continent.nameKo);
     }
     // toCamel 메서드는 입력받은 문자열 input의 내용에 대해서 카멜 케이스를 적용시켜 반환하는 메서드이다.
     // 가령, toCamel("Very nice to see you") 를 전달할 경우 반환값은 "veryNiceToSeeYou"가 되면된다.
@@ -68,23 +65,50 @@ public class Main {
     // 실근이 없는경우 길이가 0인 double[]을 반환
     // 중근일 경우 길이가 1인 double[]을 반환
     // 서로다른 실근이 있는 경우 길이가 2인 double[]을 반환하되, 더 작은값이 먼저 오도록 반환
-    public static double[] calc(int a, int b, int c) {
-        double[] result;
-        double d = Math.pow(b, 2) - 4D * a * c;
-        if (d < 0D) {
-            result = new double[0];
-        } else if (d > 0D) {
-            double f = -b / (2D * a);
-            double v = Math.sqrt(d) / (2D * a);
-            double x1 = f + v;
-            double x2 = f - v;
-//            result = new double[] {Math.min(x1,x2), Math.max(x1,x2)};
-            result = x1 > x2
-                    ? new double[]{x2,x1}
-                    : new double[]{x1,x2};
-        } else {
-            result = new double[] { -b / (2D * a)};
-        }
-        return result;
-    }
+//    public static double[] calc(int a, int b, int c) {
+//        double[] result;
+//        double d = Math.pow(b, 2) - 4D * a * c;
+//        if (d < 0D) {
+//            result = new double[0];
+//        } else if (d > 0D) {
+//            double f = -b / (2D * a);
+//            double v = Math.sqrt(d) / (2D * a);
+//            double x1 = f + v;
+//            double x2 = f - v;
+////            result = new double[] {Math.min(x1,x2), Math.max(x1,x2)};
+//            result = x1 > x2
+//                    ? new double[]{x2,x1}
+//                    : new double[]{x1,x2};
+//        } else {
+//            result = new double[] { -b / (2D * a)};
+//        }
+//        return result;
+//    }
+        // 전달된 문자열 s가 포함하고 있는 문자중, 숫자만을 변환대상으로 한다.
+        // ex) parseInt("Hello korea2023!") 호출 결과는 정수인 2023이면 된다.
+        // 추가로, 선행하는 0은 신경쓰지 않는다.
+//    public static int parseInt(String s) {
+//        String output = "";
+//        char[] sArray = s.toCharArray();
+//        for (int i=0; i < sArray.length; i++) {
+//            char c = sArray[i];
+//            if (c>= 48 && c<= 57) {
+//                output += c;
+//            }
+//        }
+//        return Integer.parseInt(output);
+//    }
+
+    // Try-Catch ex
+//    String s = "Hello";
+//        System.out.println("시작");
+//        try {
+//        int i = Integer.parseInt(s);
+//        System.out.println("성공!");
+//    } catch (NumberFormatException nfe) {
+//        System.out.println("실패!");
+//    } finally {
+//        System.out.println("종료!");
+//    }
+
 }

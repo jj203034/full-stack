@@ -5,4 +5,8 @@ public class Rabbit extends Animal {
         super("토끼");
     }
 
+    @Override
+    public void makeSomeNoise() {
+        System.out.println("토끼가 울었다.");
+    }
 }
