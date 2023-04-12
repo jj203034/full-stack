@@ -3,6 +3,8 @@ package com.jjlee.study_jdbc;
 import com.jjlee.study_jdbc.controllers.MemoController;
 import com.jjlee.study_jdbc.entities.MemoEntity;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -38,6 +40,7 @@ public class Main {
             System.out.println("=".repeat(32));
             System.out.println("1. 작성하기");
             System.out.println("2. 조회하기");
+            System.out.println("3. 삭제하기");
             System.out.println("q. 돌아가기");
             System.out.println("=".repeat(32));
             System.out.print("> ");
@@ -51,6 +54,24 @@ public class Main {
                     }
                     break;
                 case "2":
+                    List<MemoEntity> memos = memoController.query(Main.scanner);
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                    System.out.println("=".repeat(32));
+                    System.out.printf("No.\tDt.                \tText\n");
+                    System.out.println("=".repeat(32));
+                    if (memos.size() == 0) {
+                        System.out.println("표시할 메모가 없습니다.");
+                    } else {
+                        for (MemoEntity memo : memos) {
+                            System.out.printf("%3d\t%s\t%s\n",
+                                    memo.getIndex(),
+                                    sdf.format(memo.getDate()),
+                                    memo.getText());
+                        }
+                        System.out.println("=".repeat(32));
+                        System.out.printf("메모 총 %,d개\n", memos.size());
+                        System.out.println("=".repeat(32));
+                    }
                     break;
                 case "q":
                     return;
