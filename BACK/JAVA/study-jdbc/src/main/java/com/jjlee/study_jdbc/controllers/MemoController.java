@@ -9,6 +9,23 @@ import java.util.Scanner;
 
 public class MemoController {
     private final MemoService memoService = new MemoService();
+    public boolean delete(Scanner scanner) throws Exception{
+        while (true) {
+            System.out.println("=".repeat(32));
+            System.out.println("메모 삭제");
+            System.out.println("=".repeat(32));
+            System.out.print("삭제할 메모 번호 : ");
+            String indexStr = scanner.nextLine();
+            int index;
+            try {
+                index = Integer.parseInt(indexStr);
+            } catch (NumberFormatException ignored) {
+                System.out.println("올바른 메모 번호를 입력해 주세요.");
+                continue;
+            }
+            return this.memoService.delete(index);
+        }
+    }
     public List<MemoEntity> query(Scanner scanner) throws Exception{
         while (true) {
             System.out.println("=".repeat(32));
@@ -40,10 +57,10 @@ public class MemoController {
         System.out.println("메모 작성");
         System.out.println("=".repeat(50));
         System.out.print("내용 : ");
-        String text = scanner.nextLine();
+        String textStr = scanner.nextLine();
         MemoEntity memo = new MemoEntity()
                 .setDate(new Date())
-                .setText(text);
+                .setText(textStr);
         return this.memoService.write(memo);
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MemoDao {
-    public int insert(MemoEntity memo) throws Exception{
+    public int insert(MemoEntity memo) throws Exception {
         try (Connection connection = DatabaseUtil.getConnection()) {
             String query = "INSERT INTO `study_jdbc`.`memos` (datetime, text) VALUE (?, ?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -21,9 +21,10 @@ public class MemoDao {
             }
         }
     }
+
     public List<MemoEntity> select(int page) throws Exception {
         List<MemoEntity> memos = new ArrayList<>();
-        try (Connection connection = DatabaseUtil.getConnection()){
+        try (Connection connection = DatabaseUtil.getConnection()) {
             String query = "" +
                     "SELECT `index`    AS `index`,\n" +
                     "       `datetime` AS `datetime`,\n" +
@@ -33,7 +34,7 @@ public class MemoDao {
                     "LIMIT 10 OFFSET ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, 10 * (page - 1));
-                try (ResultSet resultSet = preparedStatement.executeQuery()){
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     while (resultSet.next()) {
                         MemoEntity memo = new MemoEntity()
                                 .setIndex(resultSet.getInt("index"))
@@ -46,6 +47,7 @@ public class MemoDao {
         }
         return memos;
     }
+
     public int selectCount() throws Exception {
         try (Connection connection = DatabaseUtil.getConnection()) {
             String query = "" +
@@ -59,4 +61,19 @@ public class MemoDao {
             }
         }
     }
+
+    public int delete(int index) throws Exception {
+        try (Connection connection = DatabaseUtil.getConnection()) {
+            String query = "" +
+                    "DELETE\n" +
+                    "FROM `study_jdbc`.`memos`\n" +
+                    "WHERE `index` = ?\n" +
+                    "LIMIT 1";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setInt(1, index);
+                return preparedStatement.executeUpdate();
+            }
+        }
+    }
 }
+

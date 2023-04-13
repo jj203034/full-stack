@@ -7,6 +7,9 @@ import java.util.List;
 
 public class MemoService {
     private final MemoDao memoDao = new MemoDao();
+    public boolean delete(int index) throws Exception {
+        return this.memoDao.delete(index) > 0;
+    }
     public int getCount() throws Exception {
         return this.memoDao.selectCount();
     }

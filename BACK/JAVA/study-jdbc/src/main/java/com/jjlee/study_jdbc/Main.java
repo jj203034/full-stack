@@ -73,6 +73,13 @@ public class Main {
                         System.out.println("=".repeat(32));
                     }
                     break;
+                case "3":
+                    if (memoController.delete(Main.scanner)) {
+                        System.out.println("메모를 성공적으로 삭제하였습니다.");
+                    } else {
+                        System.out.println("메모를 삭제하지 못하였습니다.");
+                    }
+                    break;
                 case "q":
                     return;
                 default:
