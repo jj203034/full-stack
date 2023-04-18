@@ -9,6 +9,32 @@
             keyProperty="index"
             parameterType="com.jjlee.studywebmemo.entities.MemoEntity">
         INSERT INTO `study_web`.`memos` (datetime, nickname, text)
-        VALUE (#{datetime}, #{nickname}, #{text})
+            VALUE (#{datetime}, #{nickname}, #{text})
     </insert>
+    <select id="selectAll"
+            resultType="com.jjlee.studywebmemo.entities.MemoEntity">
+        SELECT `index`    AS `index`,
+               `datetime` AS `datetime`,
+               `nickname` AS `nickname`,
+               `text`     AS `text`
+        from `study_web`.`memos`
+        order by `index` desc;
+    </select>
+
+    <select id="selectAllCount" resultType="int">
+        SELECT COUNT(0) as `count`
+        FROM `study_web`.`memos`
+    </select>
+
+    <select id="selectByPage"
+            parameterType="com.jjlee.studywebmemo.models.PagingModel"
+            resultType="com.jjlee.studywebmemo.entities.MemoEntity">
+        SELECT `index`    AS `index`,
+               `datetime` AS `datetime`,
+               `nickname` AS `nickname`,
+               `text`     AS `text`
+        from `study_web`.`memos`
+        order by `index` desc
+        LIMIT #{pageCount} OFFSET #{offset};
+    </select>
 </mapper>
