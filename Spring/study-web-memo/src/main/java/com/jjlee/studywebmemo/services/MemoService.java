@@ -12,19 +12,22 @@ import java.util.Date;
 public class MemoService {
     public static final int PAGE_COUNT = 10;
     private final MemoMapper memoMapper;
+
     @Autowired
     public MemoService(MemoMapper memoMapper) {
         this.memoMapper = memoMapper;
     }
+
     public MemoEntity[] getAll() {
         return this.memoMapper.selectAll();
     }
-    public int getAllCount() {
-        return this.memoMapper.selectAllCount();
+
+    public int getCount(String searchCriterion, String searchQuery) {
+        return this.memoMapper.selectCount(searchCriterion, searchQuery);
     }
 
-    public MemoEntity[] getByPage(PagingModel pagingModel) {
-        MemoEntity[] memoEntities = this.memoMapper.selectByPage(pagingModel);
+    public MemoEntity[] getByPage(PagingModel pagingModel, String searchCriterion, String searchQuery) {
+        MemoEntity[] memoEntities = this.memoMapper.selectByPage(pagingModel, searchCriterion, searchQuery);
         return memoEntities;
     }
 
@@ -39,4 +42,16 @@ public class MemoService {
         memoEntity.setDatetime(new Date());
         return this.memoMapper.insert(memoEntity) > 0;
     }
+
+    public boolean updateByIndex(int index, String text) {
+        if (memoMapper.updateByIndex(index, text) == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean deleteByIndex(int index) {
+        return this.memoMapper.deleteByIndex(index) > 0;
+    }
+
 }

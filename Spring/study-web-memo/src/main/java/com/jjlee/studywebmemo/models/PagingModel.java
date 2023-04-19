@@ -15,7 +15,7 @@ public class PagingModel {
         this.totalCount = totalCount;
         this.requestPage = Math.max(requestPage, 1);
         this.minPage = 1;
-        this.maxPage = totalCount / pageCount + (totalCount % pageCount == 0 ? 0 : 1);
+        this.maxPage = Math.max(totalCount / pageCount + (totalCount % pageCount == 0 ? 0 : 1),1);
         this.displayStartPage = ((requestPage - 1) / 10) * 10 + 1;
         this.displayEndPage = Math.min(this.maxPage, ((requestPage - 1) / 10) * 10 + 10);
         this.offset = (requestPage - 1) * this.pageCount;

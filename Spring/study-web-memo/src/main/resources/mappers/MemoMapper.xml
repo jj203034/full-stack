@@ -21,20 +21,44 @@
         order by `index` desc;
     </select>
 
-    <select id="selectAllCount" resultType="int">
+    <select id="selectCount" resultType="int">
         SELECT COUNT(0) as `count`
         FROM `study_web`.`memos`
+        <if test='searchCriterion.equals("content")'>
+            WHERE `text` LIKE CONCAT('%', #{searchQuery}, '%')
+        </if>
+        <if test='searchCriterion.equals("nickname")'>
+            WHERE BINARY `nickname` = #{searchQuery}
+        </if>
     </select>
 
     <select id="selectByPage"
-            parameterType="com.jjlee.studywebmemo.models.PagingModel"
             resultType="com.jjlee.studywebmemo.entities.MemoEntity">
         SELECT `index`    AS `index`,
                `datetime` AS `datetime`,
                `nickname` AS `nickname`,
                `text`     AS `text`
         from `study_web`.`memos`
-        order by `index` desc
-        LIMIT #{pageCount} OFFSET #{offset};
+        <if test='searchCriterion.equals("content")'>
+            WHERE `text` LIKE CONCAT('%', #{searchQuery}, '%')
+        </if>
+        <if test='searchCriterion.equals("nickname")'>
+            WHERE BINARY `nickname` = #{searchQuery}
+        </if>
+        order by `index` DESC
+        LIMIT #{pagingModel.pageCount} OFFSET #{pagingModel.offset};
     </select>
+    <update id="updateByIndex">
+        UPDATE `study_web`.`memos`
+        SET `text` = #{text}
+        WHERE `index` = #{index}
+        LIMIT 1;
+    </update>
+
+    <delete id="deleteByIndex">
+        DELETE
+        FROM `study_web`.`memos`
+        WHERE `index` = #{index}
+        LIMIT 1;
+    </delete>
 </mapper>

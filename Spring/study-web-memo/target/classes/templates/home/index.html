@@ -12,6 +12,7 @@
         alert('메모를 작성하지 못하였습니다.');
         history.back(); // 뒤로 가기 기능
     </script>
+    <script defer th:src="@{/resources/scripts/index.js}"></script>
 </head>
 <body>
 <form method="post" id="memoForm">
@@ -26,6 +27,77 @@
             <input autofocus class="input text" maxlength="100" minlength="1" name="text" placeholder="메모를 작성해 주세요." type="text">
         </label>
         <input class="button" type="submit" value="작성하기">
+    </div>
+</form>
+<div id="memoContainer">
+    <table>
+        <thead>
+        <tr>
+            <th>순번</th>
+            <th>작성자</th>
+            <th class="spring">내용</th>
+            <th>일시</th>
+            <th>삭제</th>
+            <th>수정</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="memo: ${memos}">
+            <th th:text="${memo.getIndex()}">0</th>
+            <td th:text="${memo.getNickname()}">예시 1</td>
+            <td th:text="${memo.getText()}">예시 내용 1</td>
+            <td th:text="${#dates.format(memo.getDatetime(), 'yyyy-MM-dd HH:mm:ss')}"></td>
+            <td>
+                <a href="#" class="delete" rel="delete" th:data-index="${memo.getIndex()}">삭제</a>
+            </td>
+            <td>
+                <a class="modify" href="#" rel="modify" th:data-index="${memo.getIndex()}" th:data-text="${memo.getText()}">수정</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<ul id="pageContainer">
+    <li class="page" th:if="${pagingModel.requestPage > 1}">
+        <a th:href="@{'./'(p = ${1}, c = ${searchCriterion}, q = ${searchQuery})}" class="link">처음</a>
+    </li>
+    <li class="page" th:if="${pagingModel.requestPage > 1}">
+        <a th:href="@{'./' (p = ${pagingModel.requestPage - 1}, c = ${searchCriterion}, q = ${searchQuery})}" class="link">이전</a>
+    </li>
+    <li class="page" th:each="page : ${#numbers.sequence(pagingModel.displayStartPage, pagingModel.displayEndPage)}">
+        <a th:href="@{'./' (p = ${page}, c = ${searchCriterion}, q = ${searchQuery})}" class="link" th:text="${page}"></a>
+    </li>
+    <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+        <a th:href="@{'./' (p = ${pagingModel.requestPage + 1}, c = ${searchCriterion}, q = ${searchQuery})}" class="link">다음</a>
+    </li>
+    <li class="page" th:if="${pagingModel.requestPage < pagingModel.maxPage}">
+        <a th:href="@{'./'(p = ${pagingModel.maxPage}, c = ${searchCriterion}, q = ${searchQuery})}" class="link">마지막</a>
+    </li>
+</ul>
+<form id="searchForm" method="get">
+    <label class="label">
+        <select name="c" class="input">
+            <option selected value="content">내용</option>
+            <option value="nickname">작성자</option>
+        </select>
+    </label>
+    <label class="label">
+        <input class="input" maxlength="10" name="q" placeholder="검색" type="text">
+    </label>
+    <input class="button" type="submit" value="검색">
+</form>
+<div id="modifyCover"></div>
+<form id="modifyForm">
+    <h2 class="title">수정</h2>
+    <label class="label">
+        <input readonly class="input" name="index" type="text">
+    </label>
+    <label class="label">
+        <input class="input" name="text" type="text">
+    </label>
+    <div class="button-container">
+        <input class="button" rel="close" type="button" value="취소">
+        <input class="button modify" type="submit" value="수정하기">
     </div>
 </form>
 </body>
