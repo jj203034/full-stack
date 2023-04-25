@@ -5,9 +5,10 @@ import com.jjlee.studywebuser.entities.UserEntity;
 import com.jjlee.studywebuser.enums.user.RegisterSendEmailResult;
 import com.jjlee.studywebuser.mappers.UserMapper;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -18,10 +19,12 @@ import java.util.Date;
 
 @Service
 public class UserService {
+    private final JavaMailSender javaMailSender;
     private final UserMapper userMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper) {
+    public UserService(JavaMailSender javaMailSender, UserMapper userMapper) {
+        this.javaMailSender = javaMailSender;
         this.userMapper = userMapper;
     }
 
@@ -46,6 +49,12 @@ public class UserService {
                 .setExpiresAt(DateUtils.addMinutes(registerCodeEntity.getCreatedAt(), 10))
                 .setVerified(false);
         int insertResult = this.userMapper.insertRegisterCode(registerCodeEntity);
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(registerCodeEntity.getEmail());
+        mail.setSubject("[study-web] 인증번호");
+        mail.setText(code);
+        this.javaMailSender.send(mail);
+
         return insertResult > 0
                 ? RegisterSendEmailResult.SUCCESS
                 : RegisterSendEmailResult.FAILURE;

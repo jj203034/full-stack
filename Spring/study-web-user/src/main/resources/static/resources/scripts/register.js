@@ -69,7 +69,7 @@ registerForm['emailSend'].onclick = () => {
         });
         return;
     }
-    //post로 ./registerSendEmail로 요청, insert 확인
+    dialogCover.show();
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
     const target1 = document.getElementById('emailVerify')
@@ -79,45 +79,65 @@ registerForm['emailSend'].onclick = () => {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status >= 200 && xhr.status <= 300) {
-                const responseText = xhr.responseText;
-                if (responseText === 'success') {
-                    dialogLayer.show({
-                        title: 'SUCCESS',
-                        content: '이메일로 인증 번호를 전송했습니다. 제한시간은 10분입니다.',
-                        onConfirm: e => {
-                            e.preventDefault();
-                            dialogCover.hide();
-                            dialogLayer.hide();
-                            registerForm['emailCode'].disabled = false;
-                            registerForm['emailVerify'].disabled = false;
-                            registerForm['email'].disabled = true;
-                            registerForm['emailSend'].disabled = true;
-                            registerForm['emailCode'].focus();
-                        }
-                    })
-                } else if (responseText === 'failure') {
-                    dialogLayer.show({
-                        title: 'FAILURE',
-                        content: '알 수 없는 이유로 실패했습니다.',
-                        onConfirm: e => {
-                            e.preventDefault();
-                            dialogCover.hide();
-                            dialogLayer.hide();
-                            registerForm['email'].focus();
-                        }
-                    })
-                } else if (responseText === 'failure_email_duplicate') {
-                    dialogLayer.show({
-                        title: 'FAILURE_EMAIL_DUPLICATE',
-                        content: '이미 사용중인 이메일입니다.',
-                        onConfirm: e => {
-                            e.preventDefault();
-                            dialogCover.hide();
-                            dialogLayer.hide();
-                            registerForm['email'].focus();
-                        }
-                    })
+                const responseObject = JSON.parse(xhr.responseText); // JSON.parse(x) : 문자열인 x를 js오브젝트(혹은 배열)로 변환해준다.
+                switch (responseObject['result']) {
+                    case 'success':
+                        registerForm['email'].setAttribute('disabled', 'disabled');
+                        registerForm['emailSend'].setAttribute('disabled', 'disabled');
+                        registerForm['emailCode'].removeAttribute('disabled' );
+                        registerForm['emailVerify'].removeAttribute('disabled' );
+                        registerForm['emailSalt'].value = responseObject['salt'];
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: 'SUCCESS',
+                            content: '이메일로 인증 번호를 전송했습니다. \n\n 인증번호는 10분간 유효합니다.',
+                            onConfirm: e => {
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                                e.preventDefault();
+                                registerForm['emailCode'].focus();
+                            }
+                        });
+                        break;
+                    case 'failure':
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: '인증 실패',
+                            content: '알 수 없는 이유로 이메일 인증코드 전송에 실패했습니다. \n \n 잠시 후 다시 시도해 주세요.',
+                            onConfirm: e => {
+                                e.preventDefault();
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                            }
+                        });
+                        break;
+                    case 'failure_email_duplicate':
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: '이메일 중복',
+                            content: '입력하신 이메일 주소는 이미 사용중입니다.',
+                            onConfirm: e => {
+                                e.preventDefault();
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                                registerForm['email'].focus();
+                                registerForm['email'].select();
+                            }
+                        });
+                        break;
+                    default:
                 }
+            } else {
+                dialogCover.show();
+                dialogLayer.show({
+                    title: '통신 오류',
+                    content: '서버와 통신하지 못하였습니다. \n\n 잠시후 다시 시도해주세요.',
+                    onConfirm: e => {
+                        e.preventDefault();
+                        dialogCover.hide();
+                        dialogLayer.hide();
+                    }
+                });
             }
         }
     };

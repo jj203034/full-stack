@@ -3,6 +3,8 @@ package com.jjlee.studywebuser.controllers;
 import com.jjlee.studywebuser.entities.RegisterCodeEntity;
 import com.jjlee.studywebuser.enums.user.RegisterSendEmailResult;
 import com.jjlee.studywebuser.services.UserService;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +35,11 @@ public class HomeController {
     @ResponseBody
     public String postRegisterSendEmail(RegisterCodeEntity registerCodeEntity) throws NoSuchAlgorithmException {
         RegisterSendEmailResult result = this.userService.registerSendEmail(registerCodeEntity);
-        return result.name().toLowerCase();
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
+        if (result == RegisterSendEmailResult.SUCCESS) {
+            responseObject.put("salt", registerCodeEntity.getSalt());
+        }
+        return responseObject.toString();
     }
 }
