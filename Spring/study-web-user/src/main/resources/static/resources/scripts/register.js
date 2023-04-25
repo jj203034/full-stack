@@ -14,9 +14,11 @@ addressLayer.show = () => {
     addressLayer.classList.add('visible');
 };
 addressLayer.hide = () => addressLayer.classList.remove('visible');
+
+
 registerForm.onsubmit = e => {
     e.preventDefault();
-    if(!registerForm.classList.contains('step-1')) {
+    if (!registerForm.classList.contains('step-1')) {
         if (!registerForm['agreeTerm'].checked) {
             dialogCover.show();
             dialogLayer.show({
@@ -46,7 +48,146 @@ registerForm.onsubmit = e => {
         registerForm.classList.remove('step-1');
         registerForm.classList.add('step-2');
     } else if (registerForm.classList.contains('step-2')) {
-        alert();
+        if (registerForm['nickname'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '별명을 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['nickname'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['password'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '비밀번호를 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['password'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['passwordCheck'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '비밀번호를 다시 한번 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['passwordCheck'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['password'].value != registerForm['passwordCheck'].value) {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '비밀번호가 일치하지 않습니다.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['passwordCheck'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['addressPrimary'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '주소찾기를 통해 주소를 입력해 주세요',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['addressPrimary'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['addressSecondary'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '상세 주소를 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['addressSecondary'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['gender'].value != 'F' && registerForm['gender'].value != 'M') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '성별을 선택해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['gender'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['name'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '실명을 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['name'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['birth'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '생년월일을 선택해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['birth'].focus();
+                }
+            })
+            return;
+        }
+        if (registerForm['contact'].value === '') {
+            dialogCover.show();
+            dialogLayer.show({
+                title: '경고',
+                content: '연락처를 입력해 주세요.',
+                onConfirm: e => {
+                    e.preventDefault();
+                    dialogCover.hide();
+                    dialogLayer.hide();
+                    registerForm['contact'].focus();
+                }
+            })
+            return;
+        }
     }
 };
 
@@ -72,8 +213,6 @@ registerForm['emailSend'].onclick = () => {
     dialogCover.show();
     const xhr = new XMLHttpRequest();
     const formData = new FormData();
-    const target1 = document.getElementById('emailVerify')
-    const target2 = document.getElementById('emailCode')
     formData.append(`email`, registerForm['email'].value);
     xhr.open('POST', `./registerSendEmail`)
     xhr.onreadystatechange = () => {
@@ -84,8 +223,8 @@ registerForm['emailSend'].onclick = () => {
                     case 'success':
                         registerForm['email'].setAttribute('disabled', 'disabled');
                         registerForm['emailSend'].setAttribute('disabled', 'disabled');
-                        registerForm['emailCode'].removeAttribute('disabled' );
-                        registerForm['emailVerify'].removeAttribute('disabled' );
+                        registerForm['emailCode'].removeAttribute('disabled');
+                        registerForm['emailVerify'].removeAttribute('disabled');
                         registerForm['emailSalt'].value = responseObject['salt'];
                         dialogCover.show();
                         dialogLayer.show({
@@ -143,3 +282,82 @@ registerForm['emailSend'].onclick = () => {
     };
     xhr.send(formData)
 };
+
+registerForm['emailVerify'].onclick = () => {
+    if (registerForm['emailCode'].value === '') {
+        dialogCover.show();
+        dialogLayer.show({
+            title: '경고',
+            content: '이메일 인증번호를 입력해 주세요.',
+            onConfirm: e => {
+                e.preventDefault();
+                dialogCover.hide();
+                dialogLayer.hide();
+                registerForm['emailCode'].focus();
+            }
+        })
+        return;
+    }
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append(`email`, registerForm['email'].value);
+    formData.append(`code`, registerForm['emailCode'].value);
+    formData.append(`salt`, registerForm['emailSalt'].value);
+    xhr.open('POST', './registerVerifyEmail');
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status <= 300) {
+                const responseObject = JSON.parse(xhr.responseText);
+                switch (responseObject['result']) {
+                    case 'failure':
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: '실패',
+                            content: '인증에 실패했습니다.\n \n 다시 입력해 주세요.',
+                            onConfirm: e => {
+                                e.preventDefault();
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                                registerForm['email'].removeAttribute('disabled');
+                                registerForm['emailSend'].removeAttribute('disabled');
+                            }
+                        })
+                        break;
+                    case 'failure_expired':
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: '실패',
+                            content: '인증시간이 초과되었습니다.\n 인증번호를 다시 받아주세요.',
+                            onConfirm: e => {
+                                e.preventDefault();
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                                registerForm['email'].removeAttribute('disabled');
+                                registerForm['emailSend'].removeAttribute('disabled');
+                            }
+                        })
+                        break;
+                    case 'success':
+                        registerForm['email'].removeAttribute('disabled');
+                        registerForm['emailSend'].removeAttribute('disabled');
+                        registerForm['emailCode'].setAttribute('disabled', 'disabled');
+                        registerForm['emailVerify'].setAttribute('disabled', 'disabled');
+                        dialogCover.show();
+                        dialogLayer.show({
+                            title: '성공',
+                            content: '인증이 완료되었습니다.',
+                            onConfirm: e => {
+                                e.preventDefault();
+                                dialogCover.hide();
+                                dialogLayer.hide();
+                            }
+                        })
+                        break;
+                    default:
+                }
+            }
+        }
+    }
+    xhr.send(formData)
+}
+

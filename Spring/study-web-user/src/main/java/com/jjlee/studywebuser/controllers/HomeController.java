@@ -2,6 +2,7 @@ package com.jjlee.studywebuser.controllers;
 
 import com.jjlee.studywebuser.entities.RegisterCodeEntity;
 import com.jjlee.studywebuser.enums.user.RegisterSendEmailResult;
+import com.jjlee.studywebuser.enums.user.RegisterVerifyEmailResult;
 import com.jjlee.studywebuser.services.UserService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,6 +41,15 @@ public class HomeController {
         if (result == RegisterSendEmailResult.SUCCESS) {
             responseObject.put("salt", registerCodeEntity.getSalt());
         }
+        return responseObject.toString();
+    }
+
+    @RequestMapping(value = "registerVerifyEmail", method = RequestMethod.POST)
+    @ResponseBody
+    public String postRegisterVerifyEmail(RegisterCodeEntity registerCodeEntity) {
+        RegisterVerifyEmailResult result = this.userService.registerVerifyEmail(registerCodeEntity);
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", result.name().toLowerCase());
         return responseObject.toString();
     }
 }

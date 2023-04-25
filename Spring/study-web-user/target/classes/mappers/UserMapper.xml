@@ -29,4 +29,33 @@
         WHERE BINARY `email` = #{email}
         LIMIT 1
     </select>
+
+    <select id="selectCodeByEmail"
+            resultType="com.jjlee.studywebuser.entities.RegisterCodeEntity">
+        SELECT `index`         AS `index`,
+               `email`         AS `email`,
+               `code`          AS `code`,
+               `salt`          AS `salt`,
+               `created_at`    AS `createdAt`,
+               `expires_at`    AS `expiresAt`,
+               `verified_flag` AS `isVerified`
+        FROM `study_web`.`register_codes`
+        WHERE BINARY `email` = #{email}
+          AND BINARY `code` = #{code}
+          AND BINARY `salt` = #{salt}
+        LIMIT 1
+    </select>
+
+    <update id="updateRegisterCode"
+            parameterType="com.jjlee.studywebuser.entities.RegisterCodeEntity">
+        UPDATE `study_web`.`register_codes`
+        SET `email`= #{email},
+            `code` = #{code},
+            `salt` = #{salt},
+            `created_at` = #{createdAt},
+            `expires_at` = #{expiresAt},
+            `verified_flag` = #{isVerified}
+        WHERE BINARY `index` = #{index}
+        LIMIT 1
+    </update>
 </mapper>

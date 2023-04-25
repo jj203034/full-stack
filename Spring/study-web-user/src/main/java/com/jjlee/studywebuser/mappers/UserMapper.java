@@ -10,4 +10,10 @@ public interface UserMapper {
     int insertRegisterCode(RegisterCodeEntity registerCodeEntity);
 
     UserEntity selectUserByEmail(@Param(value = "email")String email);
+
+    RegisterCodeEntity selectCodeByEmail(@Param(value = "email")String email,
+                                         @Param(value = "code") String code,
+                                         @Param(value = "salt") String salt);
+
+    int updateRegisterCode(RegisterCodeEntity registerCodeEntity);
 }
