@@ -5,33 +5,83 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>이재준입니다.</title>
+    <title>개발자 이재준입니다.</title>
     <link rel="stylesheet" href="resources/stylesheets/portfolio.css">
     <link rel="stylesheet" as="style" crossorigin
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"/>
-    <script defer src="portfolio.js"></script>
+    <script defer src="resources/portfolio.js"></script>
 </head>
 <body>
 <section id="header">
-    <header>
-        <img src="" alt="">
-        <span class="name">LEE JAE JUN</span>
-    </header>
     <nav id="mainMenu">
         <ul class="menu-container">
-            <li class="menu">Introduction</li>
-            <li class="menu">Skills</li>
-            <li class="menu">Projects</li>
-            <li class="menu">Information</li>
+            <li class="menu">
+                <a href="#one">Introduction</a>
+            </li>
+            <li class="menu">
+                <a href="#two">Skills</a>
+            </li>
+            <li class="menu">
+                <a href="#three">Portfolio</a>
+            </li>
+            <li class="menu">
+                <a href="#four">Information</a>
+            </li>
         </ul>
     </nav>
 </section>
-<section class="intro">
-    <h2 class="title">안녕하세요</h2>
-</section>
-<section class="skills">
-    <h2 class="skill-title">나의 능력</h2>
-</section>
+<div id="wrapper">
+    <section id="one">
+        <h2 class="one-title">Introduction</h2>
+        <p class="message">
+            저는 신입 벡엔드 개발자로 구직중인 이재준입니다.
+            <br>
+            만나서 반가워요.
+            <br>
+            앞으로 잘해봐요.
+        </p>
+    </section>
+    <section id="two">
+        <h2 class="two-title">My Skills</h2>
+        <h3 class="language">기술 및 언어</h3>
+        <ul class="skill-container">
+            <li class="skill">
+                <h4 class="title">HTML/CSS/JS</h4>
+            </li>
+            <li class="skill">
+                <h4 class="title">JAVA</h4>
+            </li>
+            <li class="skill">
+                <h4 class="title">Spring Boot</h4>
+            </li>
+            <li class="skill">
+                <h4 class="title">DBMS</h4>
+            </li>
+        </ul>
+        <h3 class="tools">개발 도구</h3>
+        <ul class="tool-container">
+            <li class="tool">
+                <h4 class="title">Intellij IDEA Ultimate</h4>
+            </li>
+            <li class="tool">
+                <h4 class="title">MariaDB</h4>
+            </li>
+            <li class="tool">
+                <h4 class="title">Eclipse</h4>
+            </li>
+            <li class="tool">
+                <h4 class="title">GitHub</h4>
+            </li>
+        </ul>
+    </section>
+    <section id="three">
+        <h2 class="three-title">Portfolio</h2>
+    </section>
+    <section id="four">
+        <h2 class="four-title">Information</h2>
+
+    </section>
+</div>
 
 </body>
 </html>

@@ -1,56 +1,165 @@
 @charset "UTF-8";
 
+html {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+a:link {
+    color: inherit;
+    text-decoration: none;
+}
+/* 방문한적 있는 링크 글자색 변경 */
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
 h1, h2, h3, h4, h5, h6 {
     font: inherit;
-    margin-block: unset;
-    margin-inline: unset;
-    padding-inline: unset;
 }
-
 p {
     margin-block: unset;
     margin-inline: unset;
 }
 
-html {
-    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
-}
 
 body {
     color: #10151a;
     font-size: 1rem;
-    margin: unset;
+    margin: 0;
 }
 
 #header {
-    width: 15rem;
-    height: 100%;
-    align-items: center;
-    background-color: #ffe5cc;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    width: 100%;
+    height: 5rem;
+    background-color: #606060;
     position: fixed;
-    text-align: center;
-    top: 0;
-    left: 0;
-}
-#header > #mainMenu {
-}
-
-#header > #mainMenu > .menu-container > .menu{
-    font-size: 1.35rem;
-    color: #454545;
-    list-style-type: none;
-    margin-bottom: 1.35rem;
-}
-body > .section.intro {
-    color: #20252a;
+    z-index: 10;
+    margin-top: -5rem;
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-body > .section.intro > .title {
 
+#header > #mainMenu > .menu-container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-inline: unset;
+}
+
+#header > #mainMenu > .menu-container > .menu{
+    font-size: 1.35rem;
+    color: #f6f1eb;
+    list-style-type: none;
+    padding: 1rem 5rem;
+    text-align: center;
+}
+
+body > #wrapper > #one {
+    align-items: flex-start;
+    background-color: #ffe5cc;
+    box-sizing: border-box;
+    color: #10151a;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-top: 5rem;
+    padding-top: 7rem;
+    padding-left: 5rem;
+}
+body > #wrapper > #one > * {
+    position: relative;
+}
+body > #wrapper > #one > .one-title {
+    font-size: 3rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
+}
+
+body > #wrapper > #two {
+    background-color: #cce5ff;
+    height: 90vh;
+    padding-top: 3rem;
+    padding-left: 3rem;
+}
+body > #wrapper > #two > * {
+    position: relative;
+
+}
+body > #wrapper > #two > .two-title {
+    font-size: 3rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
+}
+body > #wrapper > #two > .skill-container {
+    display: grid;
+    gap: 1.3rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+}
+body > #wrapper > #two > .skill-container >.skill {
+    left: -1rem;
+    align-items: flex-start;
+    background-color: #808B96;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    position: relative;
+}
+body > #wrapper > #two > .skill-container >.skill >.title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+body > #wrapper > #two > .tool-container {
+    display: grid;
+    gap: 1.3rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+}
+body > #wrapper > #two > .tool-container >.tool {
+    left: -1rem;
+    align-items: flex-start;
+    background-color: #808B96;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1.5rem;
+    position: relative;
+}
+body > #wrapper > #three {
+    height: 90vh;
+}
+body > #wrapper > #three > * {
+
+    position: relative;
+}
+body > #wrapper > #three > .three-title {
+    font-size: 3rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
+}
+body > #wrapper > #four {
+    height: 30vh;
+}
+body > #wrapper > #four > * {
+    position: relative;
+}
+body > #wrapper > #four > .four-title {
+    font-size: 2rem;
+    font-weight: 200;
+    margin-bottom: 3.75rem;
 }
