@@ -147,6 +147,15 @@ registerForm.termWarning.show = (text) => {
     registerForm.termWarning.classList.add('visible');
 }
 registerForm.termWarning.hide = () => registerForm.termWarning.classList.remove('visible');
+
+registerForm.contactWarning = registerForm.querySelector('[rel="contactWarning"]');
+registerForm.contactWarning.show = (text) => {
+    registerForm.contactWarning.innerText = text;
+    registerForm.contactWarning.classList.add('visible');
+}
+registerForm.contactWarning.hide = () => registerForm.contactWarning.classList.remove('visible');
+
+
 registerForm.show = () => {
     registerForm.classList.remove('step-1', 'step-2', 'step-3');
     registerForm.classList.add('step-1', 'visible');
@@ -176,6 +185,51 @@ registerForm.onsubmit = e => {
         registerForm.classList.add('step-3');
     }
 }
+
+registerForm['contactSend'].addEventListener('click', () => {
+    registerForm.contactWarning.hide();
+    if (registerForm['contact'].value === '') {
+        registerForm.contactWarning.show('연락처를 입력해 주세요.');
+        registerForm['contact'].focus();
+        return;
+    }
+    if (!new RegExp('^(010)(\\d{8})$').test(registerForm['contact'].value)) {
+        registerForm.contactWarning.show('올바른 연락처를 입력해 주세요.');
+        registerForm['contact'].focus();
+        registerForm['contact'].select();
+        return;
+    }
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `/user/contactCode?contact=${registerForm['contact'].value}`);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                const responseObject = JSON.parse(xhr.responseText);
+                switch (responseObject.result) {
+                    case 'failure_duplicate':
+                        registerForm.contactWarning.show('해당 연락처는 이미 사용중입니다.');
+                        registerForm['contact'].focus();
+                        registerForm['contact'].select();
+                        break;
+                    case 'success':
+                        registerForm['contact'].setAttribute('disabled','disabled');
+                        registerForm['contactSend'].setAttribute('disabled','disabled');
+                        registerForm['contactCode'].removeAttribute('disabled');
+                        registerForm['contactVerify'].removeAttribute('disabled');
+                        registerForm['contactCode'].focus();
+                        registerForm['contactSalt'].value = responseObject.salt;
+                        registerForm.contactWarning.show('입력하신 연락처로 인증번호를 전송하였습니다. 5분 이내로 입력해 주세요.');
+                        break;
+                    default:
+                        registerForm.contactWarning.show('서버가 알 수 없는 응답을 반환했습니다. 잠시 후 다시 시도해 주세요.')
+                }
+            } else {
+                registerForm.contactWarning.show('서버와 통신하지 못하였습니다. 잠시 후 다시 시도해 주세요.')
+            }
+        }
+    };
+    xhr.send();
+})
 
 const methods = {
     hideLogin: (x, e) => {
