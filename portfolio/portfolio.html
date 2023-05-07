@@ -9,68 +9,99 @@
     <link rel="stylesheet" href="resources/stylesheets/portfolio.css">
     <link rel="stylesheet" as="style" crossorigin
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css"/>
-    <script defer src="resources/portfolio.js"></script>
+    <script defer src="resources/scripts/portfolio.js"></script>
 </head>
 <body>
-<section id="header">
-    <nav id="mainMenu">
-        <ul class="menu-container">
-            <li class="menu">
-                <a href="#one">Introduction</a>
+<div class="_container header-container" id="headerContainer">
+    <header class="_content header">
+        <ul class="menu">
+            <li class="item">
+                <a href="#one" class="text">Introduction</a>
             </li>
-            <li class="menu">
-                <a href="#two">Skills</a>
+            <li class="item">
+                <a href="#two" class="text">Skills</a>
             </li>
-            <li class="menu">
-                <a href="#three">Portfolio</a>
+            <li class="item">
+                <a href="#three" class="text">Projects</a>
             </li>
-            <li class="menu">
-                <a href="#four">Information</a>
+            <li class="item">
+                <a href="#four" class="text">Information</a>
             </li>
         </ul>
-    </nav>
-</section>
+    </header>
+</div>
 <div id="wrapper">
     <section id="one">
         <h2 class="one-title">Introduction</h2>
-        <p class="message">
-            저는 신입 벡엔드 개발자로 구직중인 이재준입니다.
-            <br>
-            만나서 반가워요.
-            <br>
-            앞으로 잘해봐요.
-        </p>
+        <div class="_container image-container">
+            <img src="resources/images/watch.jpg" class="image">
+            <div class="name">Lee Jae Jun</div>
+        </div>
+        <div class="text">안녕하세요! 저는 신입 벡엔드 개발자로 구직중인 이재준입니다.</div>
+        <div class="text">현재 JAVA 언어를 기반으로 웹 애플리케이션의 구현을 진행하고 있으며,</div>
+        <div class="text">꾸준히 배우며 지속적으로 발전가능한 개발자가 되는 것이 목표입니다.</div>
+        <div class="text">커뮤니케이션과 팀단위 프로젝트 능력에 자신 있습니다.</div>
     </section>
     <section id="two">
         <h2 class="two-title">My Skills</h2>
         <h3 class="language">기술 및 언어</h3>
-        <ul class="skill-container">
+        <ul class="_container skill-container">
             <li class="skill">
-                <h4 class="title">HTML/CSS/JS</h4>
+                <input type="button" class="skill-button button" value="HTML/CSS/JS">
+                <div class="explain">
+                    HTML을 활용하여 웹 페이지를 생성할 수 있습니다.
+                </div>
+                <div class="explain">
+                    CSS를 활용하여 웹 페이지를 디자인할 수 있습니다.
+                </div>
+                <div class="explain">
+                    JavaScript를 활용하여 웹 페이지에 이벤트에 따른 기능을 추가할 수 있습니다.
+                </div>
             </li>
             <li class="skill">
-                <h4 class="title">JAVA</h4>
+                <input type="button" class="skill-button button" value="JAVA">
+                <div class="explain">
+                    클래스와 객체의 개념을 잘 이해하고 있으며,
+                </div>
+                <div class="explain">
+                    자바를 활용하여 웹 페이지의 기능에 대한 알고리즘을 작성하고 실행할 수 있습니다.
+                </div>
+                <div class="explain">
+                    또한, JDBC를 활용하여 데이터베이스에 접근해서 데이터를 사용할 수 있습니다.
+                </div>
             </li>
             <li class="skill">
-                <h4 class="title">Spring Boot</h4>
+                <input type="button" class="skill-button button" value="Spring Boot">
+                <div class="explain">
+                    MVC 패턴을 이해하고 있으며 이에 맞춰서 개발할 수 있습니다.
+                </div>
+                <div class="explain">
+                    Spring에서 활용할 수 있는 어노테이션들의 기능을 이해하고 있습니다.
+                </div>
             </li>
             <li class="skill">
-                <h4 class="title">DBMS</h4>
+                <input type="button" class="skill-button button" value="DBMS">
+                <div class="explain">
+                    SQL문법을 활용하여 데이터를 SELECT 할 수 있으며
+                </div>
+                <div class="explain">
+                    제약 조건과 JOIN을 활용하여 다른 테이블의 데이터를 연결시켜 조회할 수 있습니다.
+                </div>
             </li>
         </ul>
         <h3 class="tools">개발 도구</h3>
-        <ul class="tool-container">
+        <ul class="_container tool-container">
             <li class="tool">
-                <h4 class="title">Intellij IDEA Ultimate</h4>
+                <input type="button" class="tool-button button" value="Intellij IDEA Ultimate">
             </li>
             <li class="tool">
-                <h4 class="title">MariaDB</h4>
+                <input type="button" class="tool-button button" value="MariaDB">
             </li>
             <li class="tool">
-                <h4 class="title">Eclipse</h4>
+                <input type="button" class="tool-button button" value="Eclipse">
             </li>
             <li class="tool">
-                <h4 class="title">GitHub</h4>
+                <input type="button" class="tool-button button" value="Github">
             </li>
         </ul>
     </section>
@@ -79,7 +110,6 @@
     </section>
     <section id="four">
         <h2 class="four-title">Information</h2>
-
     </section>
 </div>
 

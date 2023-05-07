@@ -1,165 +1,197 @@
 @charset "UTF-8";
 
+
 html {
     font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
-a:link {
+
+a:link, a:visited {
     color: inherit;
     text-decoration: none;
 }
-/* 방문한적 있는 링크 글자색 변경 */
-a:visited {
-    color: inherit;
-    text-decoration: none;
+
+.button {
+    width: 15rem;
+    background-color: #333333;
+    border-radius: 2rem;
+    color: #e0e0e0;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0.525rem 0.875rem;
 }
+
 h1, h2, h3, h4, h5, h6 {
     font: inherit;
-}
-p {
     margin-block: unset;
     margin-inline: unset;
 }
 
+h2 {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+ul, li {
+    list-style-type: none;
+    margin-block: unset;
+    margin-inline: unset;
+    padding-block: unset;
+    padding-inline: unset;
+}
 
 body {
-    color: #10151a;
+    background-color: #f6f1eb;
+    color: #454545;
     font-size: 1rem;
+    font-weight: 400;
     margin: 0;
 }
 
-#header {
-    width: 100%;
-    height: 5rem;
-    background-color: #606060;
-    position: fixed;
-    z-index: 10;
-    margin-top: -5rem;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+._container {
+    padding: 0 3rem;
+    position: relative;
 }
 
-#header > #mainMenu > .menu-container {
+._container > ._content {
+    left: 50%;
+    width: 100%;
+    max-width: 77.5rem;
+    position: relative;
+    transform: translateX(-50%);
+}
+
+#headerContainer {
+    top: 0;
+    background-color: #333333;
+    padding: 1.5rem 3rem;
+    position: sticky;
+    z-index: 1;
+}
+
+#headerContainer > .header {
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    position: relative;
+}
+
+#headerContainer > .header > .menu {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    list-style-type: none;
     margin-block: unset;
     margin-inline: unset;
     padding-inline: unset;
 }
 
-#header > #mainMenu > .menu-container > .menu{
-    font-size: 1.35rem;
-    color: #f6f1eb;
-    list-style-type: none;
-    padding: 1rem 5rem;
-    text-align: center;
+#headerContainer > .header > .menu > .item + .item {
+    margin-left: 6.5rem;
 }
 
-body > #wrapper > #one {
-    align-items: flex-start;
-    background-color: #ffe5cc;
+#headerContainer > .header > .menu > .item > .text {
+    color: #f6f1eb;
+    font-size: 1.5rem;
+}
+
+#wrapper > #one {
+    border-bottom: 0.05rem solid #10151a;
     box-sizing: border-box;
     color: #10151a;
-    display: flex;
-    flex-direction: column;
     height: 90vh;
-    justify-content: flex-start;
     overflow: hidden;
-    margin-top: 5rem;
     padding-top: 7rem;
     padding-left: 5rem;
-}
-body > #wrapper > #one > * {
-    position: relative;
-}
-body > #wrapper > #one > .one-title {
-    font-size: 3rem;
-    font-weight: 200;
-    margin-bottom: 3.75rem;
+    line-height: 0.8rem;
 }
 
-body > #wrapper > #two {
-    background-color: #cce5ff;
-    height: 90vh;
+#wrapper > #one > * {
+    position: relative;
+}
+
+
+#wrapper > #one > .image-container > .image {
+    width: 15rem;
+    height: 10rem;
+}
+
+#wrapper > #one > .image-container > .name {
+    font-size: 1.5rem;
+    text-align: start;
+    padding-top: 1rem;
+    padding-left: 3.3rem;
+}
+
+#wrapper > #one > .text {
+    font-size: 1.45rem;
+    padding-top: 3rem;
+}
+
+#wrapper > #two {
+    background-color: #e0e0e0;
+    border-bottom: 0.05rem solid #10151a;
+    height: 70vh;
     padding-top: 3rem;
     padding-left: 3rem;
 }
-body > #wrapper > #two > * {
-    position: relative;
 
+#wrapper > #two > * {
+    position: relative;
 }
-body > #wrapper > #two > .two-title {
-    font-size: 3rem;
-    font-weight: 200;
-    margin-bottom: 3.75rem;
+
+
+#wrapper > #two > .language {
+    padding-bottom: 2rem;
 }
-body > #wrapper > #two > .skill-container {
+
+#wrapper > #two > .skill-container {
     display: grid;
     gap: 1.3rem;
     grid-template-columns: repeat(2, 1fr);
-    margin-block: unset;
-    margin-inline: unset;
-    padding-block: unset;
-    padding-inline: unset;
+    margin-bottom: 2rem;
 }
-body > #wrapper > #two > .skill-container >.skill {
-    left: -1rem;
-    align-items: flex-start;
-    background-color: #808B96;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1.5rem;
-    position: relative;
+
+#wrapper > #two > .skill-container > .skill > .explain {
+    font-size: 1.1rem;
+    padding-top: 0.55rem;
 }
-body > #wrapper > #two > .skill-container >.skill >.title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+
+#wrapper > #two > .tools {
+    padding-bottom: 0.5rem;
 }
-body > #wrapper > #two > .tool-container {
+
+#wrapper > #two > .tool-container {
     display: grid;
     gap: 1.3rem;
     grid-template-columns: repeat(2, 1fr);
-    margin-block: unset;
-    margin-inline: unset;
-    padding-block: unset;
-    padding-inline: unset;
 }
-body > #wrapper > #two > .tool-container >.tool {
-    left: -1rem;
-    align-items: flex-start;
-    background-color: #808B96;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1.5rem;
-    position: relative;
-}
-body > #wrapper > #three {
-    height: 90vh;
-}
-body > #wrapper > #three > * {
 
-    position: relative;
+#wrapper > #two > .tool-container > .tool {
+   padding-top: 1rem;
 }
-body > #wrapper > #three > .three-title {
-    font-size: 3rem;
-    font-weight: 200;
-    margin-bottom: 3.75rem;
+
+#wrapper > #two > .tool-container > .tool > .tool-button {
+    margin: unset;
 }
-body > #wrapper > #four {
+
+#wrapper > #three {
+    height: 70vh;
+    border-bottom: 0.05rem solid #10151a;
+    padding-left: 3rem;
+    padding-top: 3rem;
+}
+
+
+#wrapper > #four {
     height: 30vh;
-}
-body > #wrapper > #four > * {
-    position: relative;
-}
-body > #wrapper > #four > .four-title {
-    font-size: 2rem;
-    font-weight: 200;
-    margin-bottom: 3.75rem;
+    padding-left: 3rem;
+    padding-top: 3rem;
 }
