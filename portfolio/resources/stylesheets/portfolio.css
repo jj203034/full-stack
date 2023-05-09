@@ -10,6 +10,7 @@ a:link, a:visited {
     text-decoration: none;
 }
 
+
 .button {
     width: 15rem;
     background-color: #333333;
@@ -46,24 +47,17 @@ ul, li {
 }
 
 body {
-    background-color: #f6f1eb;
+    background-color: #fafafa;
     color: #454545;
     font-size: 1rem;
     font-weight: 400;
-    margin: 0;
+    margin: 0 10rem;
+    border: 0.0625rem solid #10151a;
 }
 
 ._container {
     padding: 0 3rem;
     position: relative;
-}
-
-._container > ._content {
-    left: 50%;
-    width: 100%;
-    max-width: 77.5rem;
-    position: relative;
-    transform: translateX(-50%);
 }
 
 #headerContainer {
@@ -103,7 +97,6 @@ body {
 }
 
 #wrapper > #one {
-    border-bottom: 0.05rem solid #10151a;
     box-sizing: border-box;
     color: #10151a;
     height: 70vh;
@@ -134,7 +127,7 @@ body {
 }
 
 #wrapper > #one > .intro-container > .image-container > .name {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-align: start;
     padding-top: 1rem;
     padding-left: 3.3rem;
@@ -142,16 +135,16 @@ body {
 
 #wrapper > #one > .intro-container > .mention-container > .text {
     font-size: 1.45rem;
-    padding-top: 3rem;
+    padding-bottom: 3rem;
 
 }
 
 #wrapper > #two {
     background-color: #e0e0e0;
-    border-bottom: 0.05rem solid #10151a;
-    height: 80vh;
-    padding-top: 3rem;
-    padding-left: 3rem;
+    box-sizing: border-box;
+    height: 85vh;
+    padding-top: 4.5rem;
+    padding-left: 4rem;
 }
 
 #wrapper > #two > * {
@@ -187,7 +180,7 @@ body {
 }
 
 #wrapper > #two > .tool-container > .tool {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 #wrapper > #two > .tool-container > .tool > .tool-button {
@@ -196,21 +189,37 @@ body {
 
 #wrapper > #three {
     height: 70vh;
-    border-bottom: 0.05rem solid #10151a;
-    padding-left: 3rem;
-    padding-top: 3rem;
+    padding-left: 4.5rem;
+    padding-top: 4rem;
 }
 
 
 #wrapper > #four {
     height: 35vh;
     background-color: #ffffff;
-    padding-left: 3rem;
-    padding-top: 3rem;
+    padding: 3rem 0 0 3rem;
 }
 
 #wrapper > #four > .info-container {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(2, 1fr);
+}
+
+#wrapper > #four > .info-container > .info {
+    padding: 0.75rem 0;
+
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#wrapper > #four > .info-container > .info > .image {
+    padding-right: 0.5rem;
+}
+
+#wrapper > #four > .info-container > .info > .info-name {
+    font-size: 1.3rem;
+    font-weight: 250;
 }
