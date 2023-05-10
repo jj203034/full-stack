@@ -1,6 +1,7 @@
 package com.jjlee.matzip.mappers;
 
 import com.jjlee.matzip.entities.RegisterContactCodeEntity;
+import com.jjlee.matzip.entities.RegisterEmailCodeEntity;
 import com.jjlee.matzip.entities.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,4 +23,5 @@ public interface UserMapper {
     UserEntity selectUserByNickname(@Param(value = "nickname")String nickname);
 
     int insertUser(UserEntity user);
+    int insertRegisterEmailCode (RegisterEmailCodeEntity registerEmailCode);
 }

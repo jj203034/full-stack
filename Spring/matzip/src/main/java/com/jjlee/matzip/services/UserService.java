@@ -1,5 +1,6 @@
 package com.jjlee.matzip.services;
 
+import com.jjlee.matzip.entities.RegisterEmailCodeEntity;
 import com.jjlee.matzip.entities.RegisterContactCodeEntity;
 import com.jjlee.matzip.entities.UserEntity;
 import com.jjlee.matzip.enums.*;
@@ -9,16 +10,27 @@ import com.jjlee.matzip.utils.NCloudUtil;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.util.Date;
+import java.util.HashMap;
 
 @Service
 public class UserService {
+    private final JavaMailSender javaMailSender;
+    private final SpringTemplateEngine springTemplateEngine;
     private final UserMapper userMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper) {
+    public UserService(JavaMailSender javaMailSender, SpringTemplateEngine springTemplateEngine, UserMapper userMapper) {
+        this.javaMailSender = javaMailSender;
+        this.springTemplateEngine = springTemplateEngine;
         this.userMapper = userMapper;
     }
 
@@ -76,7 +88,7 @@ public class UserService {
                 : CheckNicknameResult.DUPLICATE;
     }
 
-    public RegisterResult register(UserEntity user, RegisterContactCodeEntity registerContactCode) {
+    public RegisterResult register(UserEntity user, RegisterContactCodeEntity registerContactCode) throws MessagingException {
         if (this.userMapper.selectUserByEmail(user.getEmail()) != null) {
             return RegisterResult.FAILURE_DUPLICATE_EMAIL;
         }
@@ -91,8 +103,39 @@ public class UserService {
             System.out.println(registerContactCode.isExpired());
             return RegisterResult.FAILURE;
         }
+        user.setPassword(CryptoUtil.hashSha512(user.getPassword()));
         user.setStatus("EMAIL_PENDING");
-        return this.userMapper.insertUser(user) > 0
+        user.setAdmin(false);
+
+        RegisterEmailCodeEntity registerEmailCode = new RegisterEmailCodeEntity();
+        registerEmailCode.setEmail(user.getEmail());
+        registerEmailCode.setCode(RandomStringUtils.randomNumeric(6));
+        registerEmailCode.setSalt(CryptoUtil.hashSha512(String.format("%s%s%f%f",
+                registerEmailCode.getEmail(),
+                registerEmailCode.getCode(),
+                Math.random(),
+                Math.random())));
+        registerEmailCode.setCreatedAt(new Date());
+        registerEmailCode.setExpiresAt(DateUtils.addHours(registerEmailCode.getCreatedAt(), 1));
+        registerEmailCode.setExpired(false);
+
+
+        String url = String.format("http://localhost:6795/user/emailCode?email=$s&code=$s&salt=%s&",
+                registerEmailCode.getEmail(),
+                registerEmailCode.getCode(),
+                registerEmailCode.getSalt());
+        Context context = new Context();
+        context.setVariable("url", url);
+
+        MimeMessage mimeMessage = this.javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+        mimeMessageHelper.setSubject("[맛집 회원가입] 이메일 인증");
+        mimeMessageHelper.setFrom("2dlwowns@gmail.com");
+        mimeMessageHelper.setTo(user.getEmail());
+        mimeMessageHelper.setText(this.springTemplateEngine.process("_registerEmail", context), true);
+        this.javaMailSender.send(mimeMessage);
+
+        return this.userMapper.insertUser(user) > 0 && this.userMapper.insertRegisterEmailCode(registerEmailCode) > 0
                 ? RegisterResult.SUCCESS
                 : RegisterResult.FAILURE;
     }

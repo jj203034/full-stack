@@ -14,6 +14,17 @@
                 IFNULL(#{isExpired}, DEFAULT(`expired_flag`)))
     </insert>
 
+    <insert id="insertRegisterEmailCode"
+            parameterType="com.jjlee.matzip.entities.RegisterEmailCodeEntity">
+        INSERT INTO `matzip`.`register_email_codes` (`email`, `code`, `salt`, `created_at`, `expires_at`, `expired_flag`)
+            VALUE (#{email},
+                   #{code},
+                   #{salt},
+                   IFNULL(#{createdAt}, DEFAULT(`created_at`)),
+                   #{expiresAt},
+                   #{isExpired})
+    </insert>
+
     <insert id="insertUser"
             parameterType="com.jjlee.matzip.entities.UserEntity">
         INSERT INTO `matzip`.`users` (`email`, `password`, `nickname`, `contact`, `status`, `admin_flag`, `registered_at`)
