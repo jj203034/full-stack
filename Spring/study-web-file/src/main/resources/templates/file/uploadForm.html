@@ -1,16 +1,25 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Form 업로드 예제</title>
+    <script th:if="${result != null && result == true}">
+        alert('파일을 업로드하였습니다.');
+        location.href += '';
+    </script>
+    <script th:if="${result != null && result == false}">
+        alert('파일을 업로드하지 못하였습니다.');
+        location.href += '';
+    </script>
 </head>
-<body>
+<body th:if="${result == null}">
 <h1>Form 업로드 예제</h1>
 <form enctype="multipart/form-data" method="post">
-<!--    파일 업로드 할때 enctype="multipart/form-data" 사용(파일을 여러부분으로 나누어 업로드?)-->
+<!--    파일 업로드 할때 enctype="multipart/form-data" 사용(파일을 여러부분으로 나누어 업로드?) -->
+<!--    database LONGBLOB 타입 -> Binary Large Object 이진 큰 객체(?) (데이터타입) 자바로는 바이트 배열 -->
     <input name="file" type="file">
     <input type="submit" value="업로드">
 </form>
