@@ -10,11 +10,8 @@ a:link, a:visited {
     text-decoration: none;
 }
 
-a:hover {
-    color: aqua;
-    text-decoration: underline;
+a:active {
 }
-
 
 .button {
     width: 15rem;
@@ -101,10 +98,17 @@ section {
 
 #headerContainer > .header > .menu > .item {
     font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+#headerContainer > .header > .menu > .item:hover {
+    background-color: #eeeeee;
+    border-radius: 0.35rem;
+    color: #212121;
 }
 
 #headerContainer > .header > .menu > .item + .item {
-    margin-left: auto;
+    margin-left: 5rem;
 }
 
 #headerContainer > .header > .menu > .item > .text {
@@ -194,7 +198,7 @@ section {
     box-sizing: border-box;
     width: 100%;
     height: 90%;
-    padding: 4rem 3rem 3rem 4rem;
+    padding: 6rem 3rem 3rem 4rem;
 }
 
 #wrapper > #two > * {
@@ -238,16 +242,29 @@ section {
 }
 
 #wrapper > #three {
+    box-sizing: border-box;
     width: 100%;
     height: 90%;
     padding: 4rem 3rem 3rem 4rem;
 }
 
+#wrapper > #three > * {
+    position: relative;
+}
+
+#wrapper > #three > .project-container {
+    display: grid;
+    gap: 1.2rem;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 1.5rem;
+}
+
 
 #wrapper > #four {
-    width: 92.5%;
+    background-color: #e0e0e0;
+    box-sizing: border-box;
+    width: 100%;
     height: 30%;
-    background-color: #ffffff;
     padding: 4rem 3rem 0 4rem;
 }
 
@@ -271,10 +288,61 @@ section {
 }
 
 #wrapper > #four > .info-container > .info > .info-name {
-    font-size: 1.3rem;
-    font-weight: 250;
+    font-size: 1.5rem;
+    font-weight: 350;
 }
 
-@media screen and (max-width: 50rem) {
+#wrapper > #four > .info-container > .info > .info-body {
+    /*background-color: #333333;*/
+    /*color: #eeeeee;*/
+    font-size: 1.2rem;
+    font-weight: 200;
+    margin-left: 0.5rem;
+}
 
+@media screen and (max-width: 55rem) {
+    #wrapper > #one > .intro-container > .mention-container {
+        display: none;
+    }
+
+    #wrapper > #two > .skill-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #wrapper > #two > .tool-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #wrapper > #three > .project-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #wrapper > #four > .info-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 85rem) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    #wrapper > #two > .skill-container > .skill > .explain {
+        font-size: 0.9rem;
+        font-weight: 200;
+    }
+
+    #wrapper > #one > .intro-container > .mention-container > .text {
+        font-size: 1rem;
+        font-weight: 200;
+    }
+
+    #wrapper > #four > .info-container > .info > .info-name {
+        font-size: 1.05rem;
+    }
+
+    #wrapper > #four > .info-container > .info > .info-body {
+        font-size: 0.9rem;
+    }
 }
