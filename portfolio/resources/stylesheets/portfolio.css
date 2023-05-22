@@ -10,6 +10,11 @@ a:link, a:visited {
     text-decoration: none;
 }
 
+a:hover {
+    color: aqua;
+    text-decoration: underline;
+}
+
 
 .button {
     width: 15rem;
@@ -48,11 +53,15 @@ ul, li {
 
 body {
     background-color: #fafafa;
+    border: 0.0625rem solid #10151a;
     color: #454545;
     font-size: 1rem;
-    font-weight: 400;
-    margin: 0 10rem;
-    border: 0.0625rem solid #10151a;
+    font-weight: 300;
+    margin: 0 10%;
+}
+
+section {
+    min-height: 20rem;
 }
 
 ._container {
@@ -63,32 +72,39 @@ body {
 #headerContainer {
     top: 0;
     background-color: #333333;
+    min-width: 80%;
     padding: 1.5rem 3rem;
     position: sticky;
     z-index: 1;
 }
 
 #headerContainer > .header {
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: relative;
+    /*align-items: center;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
 }
 
 #headerContainer > .header > .menu {
-    align-items: center;
+    text-align: center;
+    /*align-items: center;*/
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    /*justify-content: flex-start;*/
     list-style-type: none;
     margin-block: unset;
     margin-inline: unset;
     padding-inline: unset;
+    color: #eaecee;
+    justify-content: center;
+}
+
+#headerContainer > .header > .menu > .item {
+    font-size: 1.5rem;
 }
 
 #headerContainer > .header > .menu > .item + .item {
-    margin-left: 6.5rem;
+    margin-left: auto;
 }
 
 #headerContainer > .header > .menu > .item > .text {
@@ -99,11 +115,10 @@ body {
 #wrapper > #one {
     box-sizing: border-box;
     color: #10151a;
-    height: 70vh;
+    width: 100%;
+    height: 90%;
     overflow: hidden;
-    padding-top: 7rem;
-    padding-left: 5rem;
-    line-height: 0.8rem;
+    padding: 5rem 5rem 0 5rem;
 }
 
 #wrapper > #one > * {
@@ -115,6 +130,9 @@ body {
 }
 
 #wrapper > #one > .intro-container {
+    border-bottom: 0.05rem solid #10151a;
+    padding-bottom: 1.5rem;
+
     align-items: stretch;
     display: flex;
     flex-direction: row;
@@ -123,28 +141,60 @@ body {
 
 #wrapper > #one > .intro-container > .image-container > .image {
     width: 15rem;
-    height: 10rem;
+    height: 15rem;
 }
 
-#wrapper > #one > .intro-container > .image-container > .name {
-    font-size: 1.75rem;
-    text-align: start;
-    padding-top: 1rem;
-    padding-left: 3.3rem;
+#wrapper > #one > .intro-container > .mention-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #wrapper > #one > .intro-container > .mention-container > .text {
-    font-size: 1.45rem;
-    padding-bottom: 3rem;
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+}
 
+#wrapper > #one > .profile-container {
+    padding: 2rem 2rem 0 2rem;
+
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#wrapper > #one > .profile-container > .con-one > .text {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+#wrapper > #one > .profile-container > .con-two {
+    padding-left: 2rem;
+}
+
+#wrapper > #one > .profile-container > .con-two > .profile {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+#wrapper > #one > .profile-container > .con-two > .profile > .item > .image {
+    padding-right: 1rem;
+}
+
+#wrapper > #one > .profile-container > .con-two > .profile > .item {
+    font-size: 1.25rem;
+    padding-bottom: 1.5rem;
 }
 
 #wrapper > #two {
     background-color: #e0e0e0;
     box-sizing: border-box;
-    height: 85vh;
-    padding-top: 4.5rem;
-    padding-left: 4rem;
+    width: 100%;
+    height: 90%;
+    padding: 4rem 3rem 3rem 4rem;
 }
 
 #wrapper > #two > * {
@@ -188,16 +238,17 @@ body {
 }
 
 #wrapper > #three {
-    height: 70vh;
-    padding-left: 4.5rem;
-    padding-top: 4rem;
+    width: 100%;
+    height: 90%;
+    padding: 4rem 3rem 3rem 4rem;
 }
 
 
 #wrapper > #four {
-    height: 35vh;
+    width: 92.5%;
+    height: 30%;
     background-color: #ffffff;
-    padding: 3rem 0 0 3rem;
+    padding: 4rem 3rem 0 4rem;
 }
 
 #wrapper > #four > .info-container {
@@ -222,4 +273,8 @@ body {
 #wrapper > #four > .info-container > .info > .info-name {
     font-size: 1.3rem;
     font-weight: 250;
+}
+
+@media screen and (max-width: 50rem) {
+
 }
