@@ -272,12 +272,35 @@ section {
 
 #wrapper > #three > .project-container > .project > .pro {
     font-size: 1.2rem;
-    font-weight: 350;
+    font-weight: 400;
+}
+
+#wrapper > #three > .project-container > .project > .pro > .image {
+    width: 3rem;
+    height: 3rem;
 }
 
 #wrapper > #three > .project-container > .project > .content {
-    border: 0.125rem solid aqua;
+    border-bottom : 0.125rem solid #454545;
+    border-top: 0.125rem solid #454545;
     padding-inline: unset;
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#wrapper > #three > .project-container > .project > .content > .image {
+    width: 28rem;
+    height: 16rem;
+}
+
+#wrapper > #three > .project-container > .project > .content > span {
+    line-height: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding: 2rem 0 1rem 0;
 }
 
 #wrapper > #four {
@@ -295,6 +318,7 @@ section {
 }
 
 #wrapper > #four > .info-container > .info {
+    border-bottom: 0.0225rem solid #212121;
     padding: 0.75rem 0;
 
     align-items: center;
