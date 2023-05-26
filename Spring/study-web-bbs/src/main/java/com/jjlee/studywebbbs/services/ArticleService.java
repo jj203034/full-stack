@@ -2,6 +2,8 @@ package com.jjlee.studywebbbs.services;
 
 import com.jjlee.studywebbbs.entities.ArticleEntity;
 import com.jjlee.studywebbbs.entities.AttachmentEntity;
+import com.jjlee.studywebbbs.entities.CommentEntity;
+import com.jjlee.studywebbbs.entities.ImageEntity;
 import com.jjlee.studywebbbs.mappers.ArticleMapper;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,4 +63,36 @@ public class ArticleService {
         return inserted == files.length;
     }
 
+    public ImageEntity putImage(HttpServletRequest request, MultipartFile file) throws IOException {
+        ImageEntity image = new ImageEntity();
+        image.setName(file.getOriginalFilename())
+                .setSize(file.getSize())
+                .setContentType(file.getContentType())
+                .setData(file.getBytes())
+                .setCreatedAt(new Date())
+                .setClientIp(request.getRemoteAddr())
+                .setClientUa(request.getHeader("User-Agent"));
+        this.articleMapper.insertImage(image);
+        return image;
+    }
+
+    public boolean putComment(HttpServletRequest request ,CommentEntity comment) {
+        comment.setDeleted(false)
+                .setCreatedAt(new Date())
+                .setClientIp(request.getRemoteAddr())
+                .setClientUa(request.getHeader("User-Agent"));
+        return this.articleMapper.insertComment(comment) > 0;
+    }
+
+    public ImageEntity getImage(int index) {
+        return this.articleMapper.selectImage(index);
+    }
+
+    public AttachmentEntity getAttachment(int index) {
+        return this.articleMapper.selectAttachment(index);
+    }
+
+    public CommentEntity[] getCommentsOf(int articleIndex) {
+        return this.articleMapper.selectCommentsByArticleIndex(articleIndex);
+    }
 }
