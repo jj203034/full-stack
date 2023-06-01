@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>홈페이지</title>
+    <link rel="stylesheet" th:href="@{/resources/stylesheets/detail.css}">
+    <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78f53a09ea9f9a2115d811c883d4e33d&libraries=services,clusterer,drawing"></script>
+    <script defer th:src="@{/resources/scripts/index.map.js}"></script>
+</head>
+<body>
+<form id="detail-container">
+    <div class="sight-container">
+        <div class="sight-title" name="title">관광지</div>
+        <img th:src="@{/resources/images/watch.jpg}" class="image">
+        <div class="overview-container">
+            내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>
+        </div>
+    </div>
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+</form>
+</body>
+</html>
