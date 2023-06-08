@@ -9,19 +9,62 @@
     <link rel="stylesheet" th:href="@{/resources/stylesheets/detail.css}">
     <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=78f53a09ea9f9a2115d811c883d4e33d&libraries=services,clusterer,drawing"></script>
     <script defer th:src="@{/resources/scripts/index.map.js}"></script>
+    <script defer th:src="@{/resources/scripts/detail.js}"></script>
+    <script src="https://kit.fontawesome.com/df5bb2a201.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<form id="detail-container">
-    <div class="sight-container">
-        <div class="sight-title" name="title">관광지</div>
-        <img th:src="@{/resources/images/watch.jpg}" class="image">
-        <div class="overview-container">
-            내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>
+<div id="head">
+    <span class="title">오마코스</span>
+    <nav class="menu">
+        <ul class="mainmenu">
+            <li>
+                <a href="#">커뮤니티</a>
+            </li>
+            <li>
+                <a href="#">코스만들기</a>
+            </li>
+            <li class="userLi">
+                <a href="#"><img th:src="@{/resources/images/person.png}" alt="회원"></a>
+                <ul class="submenu">
+                    <li><a href="#">내여행코스</a></li>
+                    <li><a href="#">비밀번호변경</a></li>
+                    <li><a href="#">찜리스트</a></li>
+                    <li><a href="#">??</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div id="cover" class="visible"></div>
+<form id="detailForm" class="visible">
+    <div class="high-container">
+        <div class="sight-container">
+            <img th:src="@{/resources/images/호미곶.jpg}" class="image">
+            <h3 class="sight-title">호미곶</h3>
+            <div class="overview-container">
+                내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>
+            </div>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+            <input class="pick" type="button" value="찜하기">
         </div>
     </div>
-    <div class="map-container">
-        <div id="map"></div>
+    <div class="low-container">
+        <h4 class="comment-title">리뷰</h4>
+        <div class="comment-container">
+            <label class="write-container">
+                <input class="input comment" maxlength="100" minlength="1" placeholder="댓글을 입력해 주세요." type="text">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </label>
+            <input class="button" type="submit" value="작성하기">
+        </div>
     </div>
 </form>
+<span data-action="showDetail">상세정보</span>
 </body>
 </html>
