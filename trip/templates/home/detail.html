@@ -39,20 +39,15 @@
 <form id="detailForm" class="visible">
     <div class="high-container">
         <div class="sight-container">
-            <img th:src="@{/resources/images/호미곶.jpg}" class="image">
+            <img th:src="@{/resources/images/바다.jpg}" class="image">
             <h3 class="sight-title">호미곶</h3>
             <div class="overview-container">
                 내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>내용<br>
             </div>
         </div>
-        <div class="map-container">
-            <div id="map"></div>
-            <input class="pick" type="button" value="찜하기">
-        </div>
-    </div>
-    <div class="low-container">
-        <h4 class="comment-title">리뷰</h4>
-        <div class="comment-container">
+        <div class="review-container">
+            <h4 class="title">리뷰</h4>
+            <input type="button" class="pick" value="찜하기">
             <label class="write-container">
                 <input class="input comment" maxlength="100" minlength="1" placeholder="댓글을 입력해 주세요." type="text">
                 <i class="fa-solid fa-star"></i>
@@ -60,9 +55,12 @@
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
+                <input class="button" type="submit" value="작성하기">
             </label>
-            <input class="button" type="submit" value="작성하기">
         </div>
+    </div>
+    <div class="low-container">
+        <div id="map"></div>
     </div>
 </form>
 <span data-action="showDetail">상세정보</span>
